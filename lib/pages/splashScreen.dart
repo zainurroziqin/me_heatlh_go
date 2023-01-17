@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:me_heatlh_go/config/theme.dart';
 import 'package:me_heatlh_go/pages/home.dart';
+import 'package:me_heatlh_go/pages/loginPage.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -22,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
     // TODO: implement initState
     super.initState();
     Timer(const Duration(seconds: 2), () {
-      Get.off(() =>  const HomePage());
+      Get.off(() =>   LoginPage());
     });
   }
 
