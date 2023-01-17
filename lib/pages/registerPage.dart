@@ -5,16 +5,16 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:me_heatlh_go/config/theme.dart';
-import 'package:me_heatlh_go/pages/registerPage.dart';
 
-class LoginPage extends StatefulWidget {
-  LoginPage({super.key});
+class RegisterPage extends StatefulWidget {
+  RegisterPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
+  TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
@@ -42,6 +42,33 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Text(
+                  'NAME',
+                  style: sarala40016,
+                ),
+                SizedBox(
+                  height: 6.h,
+                ),
+                Container(
+                  width: 320.w,
+                  height: 48.h,
+                  decoration: BoxDecoration(
+                      color: whiteColor,
+                      borderRadius: BorderRadius.all(Radius.circular(24.w))),
+                  child: TextFormField(
+                    controller: nameController,
+                    decoration: InputDecoration(
+                      hintText: 'Masukkan Nama',
+                      hintStyle: styleHintText,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(24.w)),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 18.h,
+                ),
                 Text(
                   'USERNAME',
                   style: sarala40016,
@@ -139,13 +166,13 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 SizedBox(
-                  height: 24.h,
+                  height: 18.h,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Belum punya akun? ',
+                      'Sudah punya akun? ',
                       style: TextStyle(
                         fontWeight: FontWeight.w400,
                         color: Colors.white,
@@ -153,10 +180,10 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     InkWell(
                       onTap: () {
-                        Get.to(RegisterPage());
+                        Get.back();
                       },
                       child: Text(
-                        'Register',
+                        'Login',
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
                           color: Colors.white,
