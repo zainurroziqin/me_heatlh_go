@@ -5,7 +5,11 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:me_heatlh_go/config/theme.dart';
+<<<<<<< Updated upstream
 import 'package:me_heatlh_go/pages/registerPage.dart';
+=======
+import 'package:me_heatlh_go/pages/home.dart';
+>>>>>>> Stashed changes
 
 class LoginPage extends StatefulWidget {
   LoginPage({super.key});
@@ -111,6 +115,9 @@ class _LoginPageState extends State<LoginPage> {
                   height: 64.h,
                 ),
                 GestureDetector(
+                  onTap: (){
+                    Get.to(const HomePage());
+                  },
                   child: Container(
                     width: 320.w,
                     height: 48.h,
