@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> {
   // ignore: prefer_final_fields
   static List<Widget> _widgethome = <Widget>[
     const KuisionerPage(),
-    const ArtikelPage(),
+    ArtikelPage(),
     const ContactPage(),
     const ProfilePage(),
   ];
