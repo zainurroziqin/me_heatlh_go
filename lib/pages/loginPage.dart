@@ -1,18 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:me_heatlh_go/config/theme.dart';
-<<<<<<< Updated upstream
-import 'package:me_heatlh_go/pages/registerPage.dart';
-=======
 import 'package:me_heatlh_go/pages/home.dart';
->>>>>>> Stashed changes
+import 'package:me_heatlh_go/pages/registerPage.dart';
+
 
 class LoginPage extends StatefulWidget {
-  LoginPage({super.key});
+  const LoginPage({super.key});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -151,7 +146,7 @@ class _LoginPageState extends State<LoginPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
+                    const Text(
                       'Belum punya akun? ',
                       style: TextStyle(
                         fontWeight: FontWeight.w400,
@@ -162,7 +157,7 @@ class _LoginPageState extends State<LoginPage> {
                       onTap: () {
                         Get.to(RegisterPage());
                       },
-                      child: Text(
+                      child: const Text(
                         'Register',
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
