@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:me_heatlh_go/config/theme.dart';
 
 class KuisionerPage extends StatelessWidget {
@@ -10,7 +11,10 @@ class KuisionerPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Scaffold(
       backgroundColor: primariColor,
-      body: const Center(child: Text('Kuisioner'),),
+      body: Padding(
+        padding: EdgeInsets.only(top: 70.h, bottom: 50.h),
+        child: const Center(child: Text('Kuisioner'),),
+      ),
     );
   }
 }
