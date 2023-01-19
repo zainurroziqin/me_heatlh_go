@@ -4,10 +4,17 @@ import 'package:me_heatlh_go/model/Kuisioner.dart';
 
 import '../config/theme.dart';
 
-class kuisionerCard extends StatelessWidget {
+class kuisionerCard extends StatefulWidget {
   final Kuisioner kuisioner;
 
   const kuisionerCard({Key? key, required this.kuisioner}) : super(key: key);
+
+  @override
+  State<kuisionerCard> createState() => _kuisionerCardState();
+}
+
+class _kuisionerCardState extends State<kuisionerCard> {
+  int _value = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +22,7 @@ class kuisionerCard extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 10.h),
       child: Container(
         width: MediaQuery.of(context).size.width,
-        height: 170.h,
+        height: 400.h,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           color: whiteColor,
@@ -32,27 +39,94 @@ class kuisionerCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      kuisioner.nomerSoal,
+                      widget.kuisioner.nomerSoal,
                       style: inter30014.copyWith(
                           fontSize: 16.sp, color: blackColor),
                       textAlign: TextAlign.justify,
                     ),
-                    Column(
-                      children: [
-                        SizedBox(
+                    Padding(
+                      padding: EdgeInsets.only(left: 5.h),
+                      child: Column(
+                        children: [
+                          SizedBox(
                             width: 290.w,
                             child: Text(
-                              kuisioner.soal,
+                              widget.kuisioner.soal,
                               style: inter30014.copyWith(
                                   fontSize: 16.sp, color: blackColor),
                               textAlign: TextAlign.justify,
-                            )),
-                      ],
-                    )
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
             ),
+            SizedBox(
+              height: 10.h,
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                RadioListTile(
+                  value: 1,
+                  groupValue: _value,
+                  onChanged: (val) {
+                    setState(() {
+                      _value = val!;
+                    });
+                  },
+                  activeColor: Colors.blue,
+                  title: Text("TP (Tidak Pernah)"),
+                ),
+                RadioListTile(
+                  value: 2,
+                  groupValue: _value,
+                  onChanged: (val) {
+                    setState(() {
+                      _value = val!;
+                    });
+                  },
+                  activeColor: Colors.blue,
+                  title: Text("TP (Tidak Pernah)"),
+                ),
+                RadioListTile(
+                  value: 3,
+                  groupValue: _value,
+                  onChanged: (val) {
+                    setState(() {
+                      _value = val!;
+                    });
+                  },
+                  activeColor: Colors.blue,
+                  title: Text("TP (Tidak Pernah)"),
+                ),
+                RadioListTile(
+                  value: 4,
+                  groupValue: _value,
+                  onChanged: (val) {
+                    setState(() {
+                      _value = val!;
+                    });
+                  },
+                  activeColor: Colors.blue,
+                  title: Text("TP (Tidak Pernah)"),
+                ),
+                RadioListTile(
+                  value: 5,
+                  groupValue: _value,
+                  onChanged: (val) {
+                    setState(() {
+                      _value = val!;
+                    });
+                  },
+                  activeColor: Colors.blue,
+                  title: Text("TP (Tidak Pernah)"),
+                ),
+              ],
+            )
           ],
         ),
       ),
