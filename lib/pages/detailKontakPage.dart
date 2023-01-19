@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:me_heatlh_go/config/theme.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:whatsapp/whatsapp.dart';
 
 class DetailKontakPage extends StatelessWidget {
@@ -9,12 +10,11 @@ class DetailKontakPage extends StatelessWidget {
   TextEditingController messageController = TextEditingController();
 
   sendMessage()async{
-    WhatsApp whatsApp = WhatsApp();
-    await whatsApp.messagesText(
-       to: 6283891667303,
-       message: messageController.text,
-       previewUrl: true
-    );
+    String text  = 'https://wa.me/6283891667303?text=${messageController.text}';
+    var url = Uri.parse(text);
+    await canLaunchUrl(url)
+    ? await launchUrl(url)
+    : throw 'Could not launch $url';
   }
 
   @override
