@@ -22,7 +22,7 @@ class kontakCard extends StatelessWidget {
       padding:  EdgeInsets.symmetric(vertical: 7.5.h),
       child: InkWell(
         onTap: (){
-          Get.to(const DetailKontakPage());
+          Get.to(DetailKontakPage());
         },
         child: Container(
           width: 330.w,

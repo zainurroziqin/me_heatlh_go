@@ -1,9 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:me_heatlh_go/config/theme.dart';
+import 'package:whatsapp/whatsapp.dart';
 
 class DetailKontakPage extends StatelessWidget {
-  const DetailKontakPage({super.key});
+  DetailKontakPage({super.key});
+
+  TextEditingController messageController = TextEditingController();
+
+  sendMessage(){
+    WhatsApp whatsApp = WhatsApp();
+    whatsApp.messagesText(
+       to: 6283891667303,
+       message: messageController.text,
+       previewUrl: true
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +91,7 @@ class DetailKontakPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10), color: whiteColor),
                 child: TextFormField(
                   keyboardType: TextInputType.multiline,
-                  //  controller: _opTextController,
+                   controller: messageController,
                   decoration:  InputDecoration(
                     hintText: 'Ketik pesan',
                     hintStyle: TextStyle(fontSize: 14.sp),
@@ -95,7 +107,9 @@ class DetailKontakPage extends StatelessWidget {
               ),
               SizedBox(height: 36.h,),
               GestureDetector(
-                onTap: (){},
+                onTap: (){
+                  sendMessage();
+                },
                 child: Container(
                   width: 130.w,
                   height: 30.h,
