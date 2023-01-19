@@ -21,6 +21,12 @@ TextStyle inter40014 = GoogleFonts.inter(
   fontWeight: FontWeight.w400
 );
 
+TextStyle inter70016 = GoogleFonts.inter(
+  fontSize: 16.sp,
+  color: whiteColor,  
+  fontWeight: FontWeight.w700
+);
+
 TextStyle inter30014 = GoogleFonts.inter(
   fontSize: 14.sp,
   color: whiteColor,  

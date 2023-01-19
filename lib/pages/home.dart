@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
   static List<Widget> _widgethome = <Widget>[
     const KuisionerPage(),
     ArtikelPage(),
-    const ContactPage(),
+    ContactPage(),
     const ProfilePage(),
   ];
 
