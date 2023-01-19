@@ -8,9 +8,9 @@ class DetailKontakPage extends StatelessWidget {
 
   TextEditingController messageController = TextEditingController();
 
-  sendMessage(){
+  sendMessage()async{
     WhatsApp whatsApp = WhatsApp();
-    whatsApp.messagesText(
+    await whatsApp.messagesText(
        to: 6283891667303,
        message: messageController.text,
        previewUrl: true
