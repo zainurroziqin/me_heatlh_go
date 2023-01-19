@@ -25,6 +25,7 @@ class kontakCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(10), color: whiteColor),
         child: Row(
           children: [
+            SizedBox(width: 19.w,),
             SizedBox(
               width: 70.w,
               height: 70.h,
