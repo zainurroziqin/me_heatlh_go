@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
   // ignore: prefer_final_fields
   static List<Widget> _widgethome = <Widget>[
-    const KuisionerPage(),
+    KuisionerPage(),
     ArtikelPage(),
     ContactPage(),
     const ProfilePage(),
@@ -43,15 +43,20 @@ class _HomePageState extends State<HomePage> {
                 width: 360.w,
                 height: 70.h,
                 decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(16), bottomRight: Radius.circular(16)),
-                  color: blueColor
-                ),
+                    borderRadius: const BorderRadius.only(
+                        bottomLeft: Radius.circular(16),
+                        bottomRight: Radius.circular(16)),
+                    color: blueColor),
                 child: Stack(
                   children: [
-                     Positioned(
-                      top: 8.h,
-                      left: 20.w,
-                      child:  Icon(Icons.person_rounded, size: 55,color: whiteColor,)),
+                    Positioned(
+                        top: 8.h,
+                        left: 20.w,
+                        child: Icon(
+                          Icons.person_rounded,
+                          size: 55,
+                          color: whiteColor,
+                        )),
                     Positioned(
                       top: 14.h,
                       left: 84.w,
@@ -62,7 +67,9 @@ class _HomePageState extends State<HomePage> {
                             'Gabriel Calvin Winata',
                             style: inter40014,
                           ),
-                          const SizedBox(height: 4,),
+                          const SizedBox(
+                            height: 4,
+                          ),
                           Text(
                             'MAN 2 JEMBER',
                             style: inter40014,
