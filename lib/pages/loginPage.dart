@@ -5,7 +5,6 @@ import 'package:me_heatlh_go/config/theme.dart';
 import 'package:me_heatlh_go/pages/home.dart';
 import 'package:me_heatlh_go/pages/registerPage.dart';
 
-
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
@@ -97,7 +96,9 @@ class _LoginPageState extends State<LoginPage> {
                               });
                             }
                           },
-                          child: const Icon(Icons.remove_red_eye_rounded)),
+                          child: showPassword
+                              ? const Icon(Icons.visibility)
+                              : const Icon(Icons.visibility_off)),
                       hintText: 'Masukkan Password',
                       hintStyle: styleHintText,
                       border: OutlineInputBorder(
@@ -110,7 +111,7 @@ class _LoginPageState extends State<LoginPage> {
                   height: 64.h,
                 ),
                 GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     Get.to(const HomePage());
                   },
                   child: Container(
