@@ -21,7 +21,7 @@ class artikelCard extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 10.h),
       child: InkWell(
         onTap: (){
-          Get.to(const DetailArtikelPage());
+          Get.to( DetailArtikelPage(artikel: artikel,));
         },
         child: Container(
           width: MediaQuery.of(context).size.width,

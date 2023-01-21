@@ -1,18 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:me_heatlh_go/config/theme.dart';
+import 'package:me_heatlh_go/model/kontak.dart';
 import 'package:url_launcher/url_launcher.dart';
-class DetailKontakPage extends StatelessWidget {
-  DetailKontakPage({super.key});
+class DetailKontakPage extends StatefulWidget {
 
+  final Kontak kontak;
+
+  DetailKontakPage({super.key, required this.kontak});
+
+  @override
+  State<DetailKontakPage> createState() => _DetailKontakPageState();
+}
+
+class _DetailKontakPageState extends State<DetailKontakPage> {
   TextEditingController messageController = TextEditingController();
+  String? noTelepon;
 
   sendMessage() async {
-    String text = 'https://wa.me/6283891667303?text=${messageController.text}';
+    String text = 'https://wa.me/${noTelepon!}?text=${messageController.text}';
     var url = Uri.parse(text);
     await canLaunchUrl(url)
     ? await launchUrl(url, mode: LaunchMode.externalApplication)
     : throw 'Could not launch $url';
+  }
+
+  getNomor(){
+    String no = widget.kontak.noTelepon;
+    noTelepon = no.substring(1);
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    getNomor();
+    super.initState();
   }
 
   @override
@@ -34,9 +56,9 @@ class DetailKontakPage extends StatelessWidget {
                   SizedBox(
                     width: 150.w,
                     height: 150.h,
-                    child: const CircleAvatar(
+                    child:  CircleAvatar(
                       radius: 48,
-                      backgroundImage: AssetImage('assets/image_dummy.png'),
+                      backgroundImage: AssetImage(widget.kontak.imageUrl),
                     ),
                   ),
                   SizedBox(
@@ -49,14 +71,14 @@ class DetailKontakPage extends StatelessWidget {
                         height: 11.h,
                       ),
                       Text(
-                        'Dr. Raymond',
+                        widget.kontak.nama,
                         style: sarala40016.copyWith(color: whiteColor),
                       ),
                       SizedBox(
                         height: 2.h,
                       ),
                       Text(
-                        'Psikolog',
+                        widget.kontak.jabatan,
                         style: sarala40016.copyWith(
                             color: whiteColor.withOpacity(0.7),
                             fontSize: 12.sp),
@@ -65,7 +87,7 @@ class DetailKontakPage extends StatelessWidget {
                         height: 3.h,
                       ),
                       Text(
-                        '+6288765321889',
+                        widget.kontak.noTelepon,
                         style: sarala40016.copyWith(
                             color: whiteColor, fontSize: 12.sp),
                       ),
@@ -73,7 +95,7 @@ class DetailKontakPage extends StatelessWidget {
                         height: 3.h,
                       ),
                       Text(
-                        'Jember, Jawa Timur',
+                        widget.kontak.alamat,
                         style: sarala40016.copyWith(
                             color: whiteColor, fontSize: 12.sp),
                       ),
