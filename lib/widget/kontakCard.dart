@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:me_heatlh_go/model/artikel.dart';
+import 'package:me_heatlh_go/model/konsultan.dart';
 import 'package:me_heatlh_go/pages/detailKontakPage.dart';
 
 import '../config/theme.dart';
@@ -9,11 +10,11 @@ import '../model/kontak.dart';
 
 class kontakCard extends StatelessWidget {
 
-  final Kontak kontak;
+  final Konsultan konsultan;
 
   const kontakCard({
     Key? key,
-    required this.kontak
+    required this.konsultan
   }) : super(key: key);
 
   @override
@@ -22,7 +23,7 @@ class kontakCard extends StatelessWidget {
       padding:  EdgeInsets.symmetric(vertical: 7.5.h),
       child: InkWell(
         onTap: (){
-          Get.to(DetailKontakPage(kontak: kontak,));
+          Get.to(DetailKontakPage(konsultan: konsultan,));
         },
         child: Container(
           width: 330.w,
@@ -37,7 +38,7 @@ class kontakCard extends StatelessWidget {
                 height: 70.h,
                 child: CircleAvatar(
                   radius: 48,
-                  backgroundImage: AssetImage(kontak.imageUrl),
+                  backgroundImage: NetworkImage(konsultan.imageUrl!),
                 ),
               ),
               SizedBox(width: 27.w,),
@@ -46,19 +47,19 @@ class kontakCard extends StatelessWidget {
                 children: [
                   SizedBox(height: 11.h,),
                   Text(
-                    kontak.nama,
+                    konsultan.nama!,
                     style: sarala40016.copyWith(color: blackColor),
                   ),
                   Text(
-                    kontak.jabatan,
+                   'Psikolog',
                     style: sarala40016.copyWith(color: lightColor, fontSize: 12.sp),
                   ),
                   Text(
-                    kontak.noTelepon,
+                    konsultan.noHp!,
                     style: sarala40016.copyWith(color: primariColor, fontSize: 12.sp),
                   ),
                   Text(
-                    kontak.alamat,
+                    'Jalan PB Sudirman',
                     style: sarala40016.copyWith(color: blackColor, fontSize: 12.sp),
                   ),
                 ],

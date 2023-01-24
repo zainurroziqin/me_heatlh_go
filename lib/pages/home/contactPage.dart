@@ -1,20 +1,38 @@
+import 'package:d_view/d_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:me_heatlh_go/config/theme.dart';
+import 'package:me_heatlh_go/controller/cKonsultan.dart';
+import 'package:me_heatlh_go/model/konsultan.dart';
 import 'package:me_heatlh_go/model/kontak.dart';
 import 'package:me_heatlh_go/widget/kontakCard.dart';
 
-class ContactPage extends StatelessWidget {
+class ContactPage extends StatefulWidget {
    ContactPage({super.key});
 
-  List listKontak = [
-    Kontak(id: 1, nama: 'Dr. Raymond ', jabatan: 'Psikolog', alamat: 'Jember, Jawa Timur', noTelepon: '+6288765321889', imageUrl: 'assets/image_dummy.png'),
-    Kontak(id: 1, nama: 'Dr. Raymond ', jabatan: 'Psikolog', alamat: 'Jember, Jawa Timur', noTelepon: '+6288765321889', imageUrl: 'assets/image_dummy.png'),
-    Kontak(id: 1, nama: 'Dr. Raymond ', jabatan: 'Psikolog', alamat: 'Jember, Jawa Timur', noTelepon: '+6288765321889', imageUrl: 'assets/image_dummy.png'),
-  ];
+  @override
+  State<ContactPage> createState() => _ContactPageState();
+}
 
+class _ContactPageState extends State<ContactPage> {
+
+  final cKonsultan  = Get.put(CKonsultan());
+
+  refresh(){
+    cKonsultan.getListKonsultan();
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    refresh();
+    cKonsultan.listKonsultan;
+    super.initState();
+  }
+  // List listKontak = [
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,11 +54,20 @@ class ContactPage extends StatelessWidget {
                 height: 21.h,
               ),
               Expanded(
-              child: ListView.builder(
-                itemCount: listKontak.length,
-                itemBuilder: (context, index) {
-                  Kontak kontak = listKontak[index];
-                  return kontakCard(kontak: kontak);
+              child: GetBuilder<CKonsultan>(
+                builder: (_) {
+                  if (_.loading) return DView.loadingCircle();
+                  if (_.listKonsultan.isEmpty) return DView.empty('Kosong');
+                  return RefreshIndicator(
+                    onRefresh: () async => refresh(),
+                    child: ListView.builder(
+                      itemCount: _.listKonsultan.length,
+                      itemBuilder: (context, index) {
+                        Konsultan konsultan = _.listKonsultan[index];
+                        return kontakCard(konsultan: konsultan,);
+                      },
+                    ),
+                  );
                 },
               ),
             )

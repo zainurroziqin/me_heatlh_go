@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:me_heatlh_go/config/theme.dart';
+import 'package:me_heatlh_go/model/konsultan.dart';
 import 'package:me_heatlh_go/model/kontak.dart';
 import 'package:url_launcher/url_launcher.dart';
 class DetailKontakPage extends StatefulWidget {
 
-  final Kontak kontak;
+  final Konsultan konsultan;
 
-  DetailKontakPage({super.key, required this.kontak});
+  DetailKontakPage({super.key, required this.konsultan});
 
   @override
   State<DetailKontakPage> createState() => _DetailKontakPageState();
@@ -26,7 +27,7 @@ class _DetailKontakPageState extends State<DetailKontakPage> {
   }
 
   getNomor(){
-    String no = widget.kontak.noTelepon;
+    String no = widget.konsultan.noHp!;
     noTelepon = no.substring(1);
   }
 
@@ -58,7 +59,7 @@ class _DetailKontakPageState extends State<DetailKontakPage> {
                     height: 150.h,
                     child:  CircleAvatar(
                       radius: 48,
-                      backgroundImage: AssetImage(widget.kontak.imageUrl),
+                      backgroundImage: NetworkImage(widget.konsultan.imageUrl!),
                     ),
                   ),
                   SizedBox(
@@ -71,14 +72,14 @@ class _DetailKontakPageState extends State<DetailKontakPage> {
                         height: 11.h,
                       ),
                       Text(
-                        widget.kontak.nama,
+                        widget.konsultan.nama!,
                         style: sarala40016.copyWith(color: whiteColor),
                       ),
                       SizedBox(
                         height: 2.h,
                       ),
                       Text(
-                        widget.kontak.jabatan,
+                        'Psikolog',
                         style: sarala40016.copyWith(
                             color: whiteColor.withOpacity(0.7),
                             fontSize: 12.sp),
@@ -87,7 +88,7 @@ class _DetailKontakPageState extends State<DetailKontakPage> {
                         height: 3.h,
                       ),
                       Text(
-                        widget.kontak.noTelepon,
+                        widget.konsultan.noHp!,
                         style: sarala40016.copyWith(
                             color: whiteColor, fontSize: 12.sp),
                       ),
@@ -95,7 +96,7 @@ class _DetailKontakPageState extends State<DetailKontakPage> {
                         height: 3.h,
                       ),
                       Text(
-                        widget.kontak.alamat,
+                        'Jalan PB Sudirman',
                         style: sarala40016.copyWith(
                             color: whiteColor, fontSize: 12.sp),
                       ),
