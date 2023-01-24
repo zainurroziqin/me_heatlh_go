@@ -1,38 +1,38 @@
+import 'package:d_view/d_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:me_heatlh_go/config/theme.dart';
+import 'package:me_heatlh_go/controller/cArtikel.dart';
 import 'package:me_heatlh_go/model/artikel.dart';
 
+import '../../controller/cKonsultan.dart';
 import '../../widget/artikelCard.dart';
 
-class ArtikelPage extends StatelessWidget {
+class ArtikelPage extends StatefulWidget {
   ArtikelPage({super.key});
 
-  List listArtikel = <Artikel>[
-    Artikel(
-      id: 1,
-      judul: 'Lari bikin Sehat',
-      isi: 'Lari bikin sehat setiap pagi nya',
-      tanggal: '19 Januari',
-      imageUrl: 'assets/image_dummy.png',
-    ),
-    Artikel(
-      id: 2,
-      judul: 'Mahfud MD menjadi MenkoPolhukam',
-      isi: 'Menteri Mahfud MD dilantik oleh presiden joko widodo menjadi menteri koordinator politik, hukum dan HAM',
-      tanggal: '19 Januari',
-      imageUrl: 'assets/image_dummy.png',
-    ),
-    Artikel(
-      id: 3,
-      judul: 'Azril Anjing',
-      isi: 'Menteri Mahfud MD dilantik oleh presiden joko widodo menjadi menteri koordinator politik, hukum dan HAM',
-      tanggal: '19 Januari',
-      imageUrl: 'assets/image_dummy.png',
-    )
-  ];
+  @override
+  State<ArtikelPage> createState() => _ArtikelPageState();
+}
+
+class _ArtikelPageState extends State<ArtikelPage> {
+  // List listArtikel = <Artikel>[
+    final cArtikel = Get.put(CArtikel());
+
+    refresh(){
+      cArtikel.getListArtikel();
+    }
+
+    @override
+  void initState() {
+    // TODO: implement initState\
+    refresh();
+    cArtikel.getListArtikel();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,11 +51,20 @@ class ArtikelPage extends StatelessWidget {
               height: 55.h,
             ),
             Expanded(
-              child: ListView.builder(
-                itemCount: listArtikel.length,
-                itemBuilder: (context, index) {
-                  Artikel artikel = listArtikel[index];
-                  return artikelCard(artikel: artikel);
+              child: GetBuilder<CArtikel>(
+                builder: (_) {
+                  if (_.loading) return DView.loadingCircle();
+                  if (_.listArtikel.isEmpty) return DView.empty('Kosong');
+                  return RefreshIndicator(
+                    onRefresh: () async => refresh(),
+                    child: ListView.builder(
+                      itemCount: _.listArtikel.length,
+                      itemBuilder: (context, index) {
+                        Artikel artikel = _.listArtikel[index];
+                        return artikelCard(artikel: artikel,);
+                      },
+                    ),
+                  );
                 },
               ),
             )

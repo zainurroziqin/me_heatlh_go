@@ -5,7 +5,7 @@ import '../config/app_request.dart';
 
 class SourceArtikel{
   static Future<List<Artikel>> getArtikel()async{
-    String url = '${Api.baseUrl}/berita';
+    String url = '${Api.baseUrl}/daftar-artikel.php';
     Map? responseBody = await AppRequest.gets(url);
 
     if(responseBody == null) return [];

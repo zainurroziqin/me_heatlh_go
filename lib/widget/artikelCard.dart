@@ -40,8 +40,8 @@ class artikelCard extends StatelessWidget {
                 ),
                 ClipRRect(
                   borderRadius: BorderRadius.circular(8),
-                  child: Image.asset(
-                    artikel.imageUrl,
+                  child: Image.network(
+                    artikel.thumbnail!.namaGambar!,
                     width: 125.w,
                     height: 74.h,
                   ),
@@ -57,7 +57,7 @@ class artikelCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          artikel.judul,
+                          artikel.judul!,
                           style: inter40014.copyWith(
                               fontSize: 16.sp, color: blackColor),
                           textAlign: TextAlign.left,
@@ -70,7 +70,7 @@ class artikelCard extends StatelessWidget {
                           children: [
                             Icon(Icons.pending_outlined, size: 12.h),
                             Text(
-                              artikel.tanggal,
+                              '19 Januari 2022',
                               style: inter30014.copyWith(
                                   fontSize: 11.sp, color: lightColor),
                             ),

@@ -26,14 +26,14 @@ class _DetailArtikelPageState extends State<DetailArtikelPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: 26.h,),
-                Image.asset(
-                  widget.artikel.imageUrl,
+                Image.network(
+                  widget.artikel.thumbnail!.namaGambar!,
                   width: 300.w,
                   height: 177.h,
                   fit: BoxFit.cover,
                 ),
                 Text(
-                  widget.artikel.judul,
+                  widget.artikel.judul!,
                   style: inter40014.copyWith(fontSize: 16.sp),
                 ),
                 SizedBox(height: 11.h,),
@@ -45,7 +45,7 @@ class _DetailArtikelPageState extends State<DetailArtikelPage> {
                   ],
                 ),
                 Text(
-                  widget.artikel.isi,
+                  widget.artikel.deskripsi!,
                   style: inter40014.copyWith(fontSize: 16.sp),
                 )
               ],
