@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:me_heatlh_go/config/theme.dart';
 import 'package:me_heatlh_go/controller/cKuisioner.dart';
 import 'package:me_heatlh_go/model/kuisioner.dart';
+import 'package:me_heatlh_go/pages/detailKuisioner.dart';
 import 'package:me_heatlh_go/widget/kuisionerCard.dart';
 
 class KuisionerPage extends StatefulWidget {
@@ -68,6 +69,42 @@ class _KuisionerPageState extends State<KuisionerPage> {
                     ),
                   );
                 }),
+              ),
+              SizedBox(
+                height: 5.h,
+              ),
+              GestureDetector(
+                onTap: () {
+                  Get.to(DetailKuisioner());
+                },
+                child: Container(
+                  width: 200.w,
+                  height: 40.h,
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: lightColor.withOpacity(0.3),
+                        spreadRadius: 0,
+                        blurRadius: 4,
+                        offset: const Offset(0, 4),
+                      ),
+                    ],
+                    color: secondaryColor,
+                    borderRadius: BorderRadius.circular(48.w),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'SUBMIT',
+                      style: sarala40016.copyWith(
+                          fontSize: 12.sp,
+                          color: blackColor,
+                          fontWeight: FontWeight.w700),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 5.h,
               )
             ],
           )),
