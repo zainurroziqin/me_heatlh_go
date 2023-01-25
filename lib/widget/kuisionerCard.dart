@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:me_heatlh_go/model/Kuisioner.dart';
+import 'package:me_heatlh_go/model/kuisioner.dart';
 
 import '../config/theme.dart';
 
@@ -22,7 +22,7 @@ class _kuisionerCardState extends State<kuisionerCard> {
       padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 10.h),
       child: Container(
         width: MediaQuery.of(context).size.width,
-        height: 400.h,
+        height: 350.h,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           color: whiteColor,
@@ -34,12 +34,12 @@ class _kuisionerCardState extends State<kuisionerCard> {
             Padding(
               padding: EdgeInsets.only(top: 20.h),
               child: SizedBox(
-                width: 313.w,
+                width: 330.w,
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      widget.kuisioner.nomerSoal,
+                      widget.kuisioner.idKuisioner,
                       style: inter30014.copyWith(
                           fontSize: 16.sp, color: blackColor),
                       textAlign: TextAlign.justify,
@@ -51,7 +51,7 @@ class _kuisionerCardState extends State<kuisionerCard> {
                           SizedBox(
                             width: 290.w,
                             child: Text(
-                              widget.kuisioner.soal,
+                              widget.kuisioner.pertanyaan,
                               style: inter30014.copyWith(
                                   fontSize: 16.sp, color: blackColor),
                               textAlign: TextAlign.justify,
@@ -90,7 +90,7 @@ class _kuisionerCardState extends State<kuisionerCard> {
                     });
                   },
                   activeColor: Colors.blue,
-                  title: Text("TP (Tidak Pernah)"),
+                  title: Text("JP (Jarang)"),
                 ),
                 RadioListTile(
                   value: 3,
@@ -101,7 +101,7 @@ class _kuisionerCardState extends State<kuisionerCard> {
                     });
                   },
                   activeColor: Colors.blue,
-                  title: Text("TP (Tidak Pernah)"),
+                  title: Text("KD (Kadang-kadang)"),
                 ),
                 RadioListTile(
                   value: 4,
@@ -112,7 +112,7 @@ class _kuisionerCardState extends State<kuisionerCard> {
                     });
                   },
                   activeColor: Colors.blue,
-                  title: Text("TP (Tidak Pernah)"),
+                  title: Text("SR (Sering)"),
                 ),
                 RadioListTile(
                   value: 5,
@@ -123,7 +123,7 @@ class _kuisionerCardState extends State<kuisionerCard> {
                     });
                   },
                   activeColor: Colors.blue,
-                  title: Text("TP (Tidak Pernah)"),
+                  title: Text("SL (Selalu)"),
                 ),
               ],
             )

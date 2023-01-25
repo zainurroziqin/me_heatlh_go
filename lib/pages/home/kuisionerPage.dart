@@ -1,50 +1,34 @@
+import 'package:d_view/d_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:me_heatlh_go/config/theme.dart';
-import 'package:me_heatlh_go/model/Kuisioner.dart';
+import 'package:me_heatlh_go/controller/cKuisioner.dart';
+import 'package:me_heatlh_go/model/kuisioner.dart';
 import 'package:me_heatlh_go/widget/kuisionerCard.dart';
 
-class KuisionerPage extends StatelessWidget {
+class KuisionerPage extends StatefulWidget {
   KuisionerPage({super.key});
 
-  List listkuisioner = [
-    Kuisioner(
-        id: 1,
-        nomerSoal: "1.",
-        soal: "Saya bahagia, puas, atau senang dengan kehidupan pribadi saya"),
-    Kuisioner(
-        id: 2,
-        nomerSoal: "2.",
-        soal:
-            "Saya merasa masa depan terlihat penuh harapan dan menjanjikan bagi saya"),
-    Kuisioner(
-        id: 2,
-        nomerSoal: "3.",
-        soal:
-            "Saya merasa masa depan terlihat penuh harapan dan menjanjikan bagi saya"),
-    Kuisioner(
-        id: 3,
-        nomerSoal: "4.",
-        soal:
-            "Saya merasa masa depan terlihat penuh harapan dan menjanjikan bagi saya"),
-    Kuisioner(
-        id: 4,
-        nomerSoal: "5.",
-        soal:
-            "Saya merasa masa depan terlihat penuh harapan dan menjanjikan bagi saya"),
-    Kuisioner(
-        id: 5,
-        nomerSoal: "6.",
-        soal:
-            "Saya merasa masa depan terlihat penuh harapan dan menjanjikan bagi saya"),
-    Kuisioner(
-        id: 6,
-        nomerSoal: "7.",
-        soal:
-            "Saya merasa masa depan terlihat penuh harapan dan menjanjikan bagi saya"),
-  ];
+  @override
+  State<KuisionerPage> createState() => _KuisionerPageState();
+}
+
+class _KuisionerPageState extends State<KuisionerPage> {
+  final cKuisioner = Get.put(CKuisioner());
+
+  refresh() {
+    cKuisioner.getListKuisioner();
+  }
+
+  @override
+  void initState() {
+    refresh();
+    cKuisioner.listKuisioner;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,13 +51,23 @@ class KuisionerPage extends StatelessWidget {
                 height: 21.h,
               ),
               Expanded(
-                child: ListView.builder(
-                  itemCount: listkuisioner.length,
-                  itemBuilder: (context, index) {
-                    Kuisioner kuisioner = listkuisioner[index];
-                    return kuisionerCard(kuisioner: kuisioner);
-                  },
-                ),
+                child: GetBuilder<CKuisioner>(builder: (_) {
+                  if (_.loading) return DView.loadingCircle();
+                  if (_.listKuisioner.isEmpty)
+                    return DView.empty('Pertanyaan Kosong');
+                  return RefreshIndicator(
+                    onRefresh: () async => refresh(),
+                    child: ListView.builder(
+                      itemCount: _.listKuisioner.length,
+                      itemBuilder: (context, index) {
+                        Kuisioner kuisioner = _.listKuisioner[index];
+                        return kuisionerCard(
+                          kuisioner: kuisioner,
+                        );
+                      },
+                    ),
+                  );
+                }),
               )
             ],
           )),

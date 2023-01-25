@@ -88,7 +88,7 @@ class _LoginPageState extends State<LoginPage> {
                         child: TextFormField(
                           controller: emailController,
                           decoration: InputDecoration(
-                            hintText: 'Masukkan Email',
+                            hintText: 'Masukkan Username',
                             hintStyle: styleHintText,
                             border: OutlineInputBorder(
                               borderRadius:

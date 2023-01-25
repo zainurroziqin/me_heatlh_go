@@ -85,7 +85,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   child: TextFormField(
                     controller: emailController,
                     decoration: InputDecoration(
-                      hintText: 'Masukkan Email',
+                      hintText: 'Masukkan Username',
                       hintStyle: styleHintText,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(24.w)),

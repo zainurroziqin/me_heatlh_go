@@ -11,17 +11,16 @@ import 'package:me_heatlh_go/model/kontak.dart';
 import 'package:me_heatlh_go/widget/kontakCard.dart';
 
 class ContactPage extends StatefulWidget {
-   ContactPage({super.key});
+  ContactPage({super.key});
 
   @override
   State<ContactPage> createState() => _ContactPageState();
 }
 
 class _ContactPageState extends State<ContactPage> {
+  final cKonsultan = Get.put(CKonsultan());
 
-  final cKonsultan  = Get.put(CKonsultan());
-
-  refresh(){
+  refresh() {
     cKonsultan.getListKonsultan();
   }
 
@@ -32,13 +31,15 @@ class _ContactPageState extends State<ContactPage> {
     cKonsultan.listKonsultan;
     super.initState();
   }
+
   // List listKontak = [
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: primariColor,
       body: Padding(
-          padding: EdgeInsets.only(top: 70.h, bottom: 50.h, left: 15.w, right: 15.w),
+          padding:
+              EdgeInsets.only(top: 70.h, bottom: 50.h, left: 15.w, right: 15.w),
           child: Column(
             children: [
               SizedBox(
@@ -54,23 +55,25 @@ class _ContactPageState extends State<ContactPage> {
                 height: 21.h,
               ),
               Expanded(
-              child: GetBuilder<CKonsultan>(
-                builder: (_) {
-                  if (_.loading) return DView.loadingCircle();
-                  if (_.listKonsultan.isEmpty) return DView.empty('Kosong');
-                  return RefreshIndicator(
-                    onRefresh: () async => refresh(),
-                    child: ListView.builder(
-                      itemCount: _.listKonsultan.length,
-                      itemBuilder: (context, index) {
-                        Konsultan konsultan = _.listKonsultan[index];
-                        return kontakCard(konsultan: konsultan,);
-                      },
-                    ),
-                  );
-                },
-              ),
-            )
+                child: GetBuilder<CKonsultan>(
+                  builder: (_) {
+                    if (_.loading) return DView.loadingCircle();
+                    if (_.listKonsultan.isEmpty) return DView.empty('Kosong');
+                    return RefreshIndicator(
+                      onRefresh: () async => refresh(),
+                      child: ListView.builder(
+                        itemCount: _.listKonsultan.length,
+                        itemBuilder: (context, index) {
+                          Konsultan konsultan = _.listKonsultan[index];
+                          return kontakCard(
+                            konsultan: konsultan,
+                          );
+                        },
+                      ),
+                    );
+                  },
+                ),
+              )
             ],
           )),
     );
