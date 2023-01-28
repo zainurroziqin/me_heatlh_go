@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:me_heatlh_go/config/api.dart';
 import 'package:me_heatlh_go/config/theme.dart';
 import 'package:me_heatlh_go/model/konsultan.dart';
 import 'package:me_heatlh_go/model/kontak.dart';
 import 'package:url_launcher/url_launcher.dart';
-class DetailKontakPage extends StatefulWidget {
 
+class DetailKontakPage extends StatefulWidget {
   final Konsultan konsultan;
 
   DetailKontakPage({super.key, required this.konsultan});
@@ -22,11 +23,11 @@ class _DetailKontakPageState extends State<DetailKontakPage> {
     String text = 'https://wa.me/${noTelepon!}?text=${messageController.text}';
     var url = Uri.parse(text);
     await canLaunchUrl(url)
-    ? await launchUrl(url, mode: LaunchMode.externalApplication)
-    : throw 'Could not launch $url';
+        ? await launchUrl(url, mode: LaunchMode.externalApplication)
+        : throw 'Could not launch $url';
   }
 
-  getNomor(){
+  getNomor() {
     String no = widget.konsultan.noHp!;
     noTelepon = no.substring(1);
   }
@@ -57,9 +58,10 @@ class _DetailKontakPageState extends State<DetailKontakPage> {
                   SizedBox(
                     width: 150.w,
                     height: 150.h,
-                    child:  CircleAvatar(
+                    child: CircleAvatar(
                       radius: 48,
-                      backgroundImage: NetworkImage(widget.konsultan.imageUrl!),
+                      backgroundImage: NetworkImage(
+                          '${Api.baseUrlImg}/${widget.konsultan.imageUrl!}'),
                     ),
                   ),
                   SizedBox(
@@ -79,7 +81,7 @@ class _DetailKontakPageState extends State<DetailKontakPage> {
                         height: 2.h,
                       ),
                       Text(
-                        'Psikolog',
+                        widget.konsultan.pekerjaan!,
                         style: sarala40016.copyWith(
                             color: whiteColor.withOpacity(0.7),
                             fontSize: 12.sp),
@@ -96,7 +98,7 @@ class _DetailKontakPageState extends State<DetailKontakPage> {
                         height: 3.h,
                       ),
                       Text(
-                        'Jalan PB Sudirman',
+                        widget.konsultan.alamat!,
                         style: sarala40016.copyWith(
                             color: whiteColor, fontSize: 12.sp),
                       ),

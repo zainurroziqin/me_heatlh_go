@@ -3,9 +3,9 @@ import '../config/api.dart';
 import '../config/session.dart';
 import '../model/user.dart';
 
-class SourceUser{
+class SourceUser {
   static Future<bool> login(String username, String password) async {
-    String url = '${Api.baseUrl}/login.php';
+    String url = '${Api.baseUrl}/login';
     Map? responseBody = await AppRequest.post(
         url, {'username': username, 'password': password});
     if (responseBody == null) return false;
