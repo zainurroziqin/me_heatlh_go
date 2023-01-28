@@ -1,6 +1,6 @@
 class Api {
   static const baseUrl =
-      'https://c6f0-2001-448a-5122-81bd-df32-582d-84f7-631f.ap.ngrok.io/Me-HealthGo/api';
+      'https://f9f4-2001-448a-5122-81bd-86b0-a372-2e70-7ea6.ap.ngrok.io/Me-HealthGo/api';
   static const baseUrlImg =
-      'https://c6f0-2001-448a-5122-81bd-df32-582d-84f7-631f.ap.ngrok.io/Me-HealthGo';
+      'https://f9f4-2001-448a-5122-81bd-86b0-a372-2e70-7ea6.ap.ngrok.io/Me-HealthGo';
 }
