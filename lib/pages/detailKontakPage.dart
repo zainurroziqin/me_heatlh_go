@@ -96,10 +96,13 @@ class _DetailKontakPageState extends State<DetailKontakPage> {
                       SizedBox(
                         height: 3.h,
                       ),
-                      Text(
-                        widget.konsultan.alamat!,
-                        style: sarala40016.copyWith(
-                            color: whiteColor, fontSize: 12.sp),
+                      SizedBox(
+                        width: 160.w,
+                        child: Text(
+                          widget.konsultan.alamat!,
+                          style: sarala40016.copyWith(
+                              color: whiteColor, fontSize: 12.sp),
+                        ),
                       ),
                     ],
                   )

@@ -25,7 +25,7 @@ class kontakCard extends StatelessWidget {
         },
         child: Container(
           width: 330.w,
-          height: 100.h,
+          height: 120.h,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10), color: whiteColor),
           child: Row(
@@ -65,10 +65,13 @@ class kontakCard extends StatelessWidget {
                     style: sarala40016.copyWith(
                         color: primariColor, fontSize: 12.sp),
                   ),
-                  Text(
-                    konsultan.alamat!,
-                    style: sarala40016.copyWith(
-                        color: blackColor, fontSize: 12.sp),
+                  SizedBox(
+                    width: 210.w,
+                    child: Text(
+                      konsultan.alamat!,
+                      style: sarala40016.copyWith(
+                          color: blackColor, fontSize: 12.sp),
+                    ),
                   ),
                 ],
               )
