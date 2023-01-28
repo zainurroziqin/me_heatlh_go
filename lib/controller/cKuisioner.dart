@@ -6,6 +6,11 @@ class CKuisioner extends GetxController {
   final _loading = false.obs;
   bool get loading => _loading.value;
 
+  final _hasil = 0.obs;
+  int get hasil => _hasil.value;
+  setHasil(int n) => _hasil.value = _hasil.value + n;
+  setUpdate(int n) => _hasil.value = _hasil.value - n;
+
   final _listKuisioner = <Kuisioner>[].obs;
   List<Kuisioner> get listKuisioner => _listKuisioner.value;
 

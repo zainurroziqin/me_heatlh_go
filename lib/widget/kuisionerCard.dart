@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:me_heatlh_go/controller/cKuisioner.dart';
 import 'package:me_heatlh_go/model/kuisioner.dart';
 
 import '../config/theme.dart';
@@ -7,14 +10,29 @@ import '../config/theme.dart';
 class kuisionerCard extends StatefulWidget {
   final Kuisioner kuisioner;
 
-  const kuisionerCard({Key? key, required this.kuisioner}) : super(key: key);
+  kuisionerCard({Key? key, required this.kuisioner}) : super(key: key);
 
   @override
   State<kuisionerCard> createState() => _kuisionerCardState();
 }
 
 class _kuisionerCardState extends State<kuisionerCard> {
-  int _value = 1;
+  int value = 0;
+  int hasil = 0;
+  int reset = 0;
+  final cKuisioner = Get.put(CKuisioner());
+
+  @override
+  void initState() {
+    super.initState();
+    // value = 0;
+  }
+
+  // setValue(int val) {
+  //   setState(() {
+  //      cKuisioner.hasil = val;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -72,21 +90,30 @@ class _kuisionerCardState extends State<kuisionerCard> {
               children: [
                 RadioListTile(
                   value: 1,
-                  groupValue: _value,
+                  groupValue: value,
                   onChanged: (val) {
                     setState(() {
-                      _value = val!;
+                      cKuisioner.setUpdate(value);
+                      value = val!;
+                      hasil = val;
+                      cKuisioner.setHasil(hasil);
+                      hasil = cKuisioner.hasil;
                     });
                   },
                   activeColor: Colors.blue,
                   title: Text("TP (Tidak Pernah)"),
+                  selected: false,
                 ),
                 RadioListTile(
                   value: 2,
-                  groupValue: _value,
+                  groupValue: value,
                   onChanged: (val) {
                     setState(() {
-                      _value = val!;
+                      cKuisioner.setUpdate(value);
+                      value = val!;
+                      hasil = val;
+                      cKuisioner.setHasil(hasil);
+                      hasil = cKuisioner.hasil;
                     });
                   },
                   activeColor: Colors.blue,
@@ -94,10 +121,14 @@ class _kuisionerCardState extends State<kuisionerCard> {
                 ),
                 RadioListTile(
                   value: 3,
-                  groupValue: _value,
+                  groupValue: value,
                   onChanged: (val) {
                     setState(() {
-                      _value = val!;
+                      cKuisioner.setUpdate(value);
+                      value = val!;
+                      hasil = val;
+                      cKuisioner.setHasil(hasil);
+                      hasil = cKuisioner.hasil;
                     });
                   },
                   activeColor: Colors.blue,
@@ -105,10 +136,14 @@ class _kuisionerCardState extends State<kuisionerCard> {
                 ),
                 RadioListTile(
                   value: 4,
-                  groupValue: _value,
+                  groupValue: value,
                   onChanged: (val) {
                     setState(() {
-                      _value = val!;
+                      cKuisioner.setUpdate(value);
+                      value = val!;
+                      hasil = val;
+                      cKuisioner.setHasil(hasil);
+                      hasil = cKuisioner.hasil;
                     });
                   },
                   activeColor: Colors.blue,
@@ -116,10 +151,14 @@ class _kuisionerCardState extends State<kuisionerCard> {
                 ),
                 RadioListTile(
                   value: 5,
-                  groupValue: _value,
+                  groupValue: value,
                   onChanged: (val) {
                     setState(() {
-                      _value = val!;
+                      cKuisioner.setUpdate(value);
+                      value = val!;
+                      hasil = val;
+                      cKuisioner.setHasil(hasil);
+                      hasil = cKuisioner.hasil;
                     });
                   },
                   activeColor: Colors.blue,

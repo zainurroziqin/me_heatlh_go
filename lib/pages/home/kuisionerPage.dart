@@ -54,8 +54,7 @@ class _KuisionerPageState extends State<KuisionerPage> {
               Expanded(
                 child: GetBuilder<CKuisioner>(builder: (_) {
                   if (_.loading) return DView.loadingCircle();
-                  if (_.listKuisioner.isEmpty)
-                    return DView.empty('Pertanyaan Kosong');
+                  if (_.listKuisioner.isEmpty)  return DView.empty('Pertanyaan Kosong');
                   return RefreshIndicator(
                     onRefresh: () async => refresh(),
                     child: ListView.builder(
@@ -75,7 +74,7 @@ class _KuisionerPageState extends State<KuisionerPage> {
               ),
               GestureDetector(
                 onTap: () {
-                  Get.to(DetailKuisioner());
+                  Get.to(const DetailKuisioner());
                 },
                 child: Container(
                   width: 200.w,

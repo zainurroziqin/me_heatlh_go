@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:me_heatlh_go/config/theme.dart';
+import 'package:me_heatlh_go/controller/cKuisioner.dart';
 
 class DetailKuisioner extends StatefulWidget {
   const DetailKuisioner({Key? key}) : super(key: key);
@@ -11,6 +12,24 @@ class DetailKuisioner extends StatefulWidget {
 }
 
 class _DetailKuisionerState extends State<DetailKuisioner> {
+  int? hasil;
+  String? deskripsi;
+  final cKuisioner = Get.put(CKuisioner());
+  getHasil() {
+    hasil = cKuisioner.hasil;
+    if (hasil! > 95) {
+      deskripsi = 'mengalami depresi';
+    } else {
+      deskripsi = 'tidak mengalami depresi';
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getHasil();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,14 +49,14 @@ class _DetailKuisionerState extends State<DetailKuisioner> {
                 SizedBox(
                   height: 15.h,
                 ),
-                const Text(
-                  'Hasil dari pengisian Kuisioner adalah :',
+                Text(
+                  'Hasil dari pengisian Kuisioner adalah : ${hasil}',
                 ),
                 SizedBox(
                   height: 15.h,
                 ),
-                const Text(
-                  '=== Mengalami Kecemasan ===',
+                Text(
+                  '=== ${deskripsi} ===',
                 ),
                 SizedBox(
                   height: 30.h,
