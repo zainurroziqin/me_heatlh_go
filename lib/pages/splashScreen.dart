@@ -1,12 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:me_heatlh_go/config/theme.dart';
-import 'package:me_heatlh_go/pages/home.dart';
 import 'package:me_heatlh_go/pages/loginPage.dart';
 
 class SplashScreen extends StatefulWidget {

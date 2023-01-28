@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:me_heatlh_go/config/api.dart';
 import 'package:me_heatlh_go/config/theme.dart';
 import 'package:me_heatlh_go/model/konsultan.dart';
-import 'package:me_heatlh_go/model/kontak.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DetailKontakPage extends StatefulWidget {

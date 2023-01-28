@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:me_heatlh_go/config/theme.dart';
-import 'package:me_heatlh_go/pages/home.dart';
-import 'package:me_heatlh_go/pages/home/artikelPage.dart';
-import 'package:me_heatlh_go/pages/home/contactPage.dart';
 
 class DetailKuisioner extends StatefulWidget {
   const DetailKuisioner({Key? key}) : super(key: key);
@@ -33,13 +30,13 @@ class _DetailKuisionerState extends State<DetailKuisioner> {
                 SizedBox(
                   height: 15.h,
                 ),
-                Text(
+                const Text(
                   'Hasil dari pengisian Kuisioner adalah :',
                 ),
                 SizedBox(
                   height: 15.h,
                 ),
-                Text(
+                const Text(
                   '=== Mengalami Kecemasan ===',
                 ),
                 SizedBox(

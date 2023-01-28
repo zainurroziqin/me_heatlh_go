@@ -1,4 +1,3 @@
-import 'package:me_heatlh_go/model/artikel.dart';
 import 'package:me_heatlh_go/model/konsultan.dart';
 
 import '../config/api.dart';
