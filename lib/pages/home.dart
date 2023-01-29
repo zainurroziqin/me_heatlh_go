@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:me_heatlh_go/config/theme.dart';
+import 'package:me_heatlh_go/controller/cUser.dart';
 import 'package:me_heatlh_go/pages/home/contactPage.dart';
 import 'package:me_heatlh_go/pages/home/kuisionerPage.dart';
 import 'package:me_heatlh_go/pages/home/profilePage.dart';
@@ -16,6 +18,9 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
+
+  final cUser = Get.put(CUser());
+
   // ignore: prefer_final_fields
   static List<Widget> _widgethome = <Widget>[
     KuisionerPage(),
@@ -64,14 +69,14 @@ class _HomePageState extends State<HomePage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Gabriel Calvin Winata',
+                            cUser.data.name ?? '',
                             style: inter40014,
                           ),
                           const SizedBox(
                             height: 4,
                           ),
                           Text(
-                            'MAN 2 JEMBER',
+                            cUser.data.asalSekolah ?? '',
                             style: inter40014,
                           )
                         ],
