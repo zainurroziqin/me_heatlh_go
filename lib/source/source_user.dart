@@ -16,4 +16,19 @@ class SourceUser {
     }
     return responseBody['success'];
   }
+
+  static Future<bool> register(
+      String name, String asalSekolah, String username, String password) async {
+    String url = '${Api.baseUrl}/register';
+    Map? responseBody = await AppRequest.post(url, {
+      'name': name,
+      'asal_sekolah': asalSekolah,
+      'username': username,
+      'password': password
+    });
+
+    if (responseBody == null) return false;
+    if (responseBody['success'] == null) return false;
+    return responseBody['success'];
+  }
 }

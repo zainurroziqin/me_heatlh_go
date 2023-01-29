@@ -7,11 +7,24 @@ class CLogin extends GetxController {
   bool get loading => _loading.value;
   final _successLogin = false.obs;
   bool get successLogin => _successLogin.value;
+  final _successRegister = false.obs;
+  bool get successRegister => _successRegister.value;
 
   login(String username, String password) async {
     _loading.value = true;
     update();
     _successLogin.value = await SourceUser.login(username, password);
+    update();
+    _loading.value = false;
+    update();
+  }
+
+  regsiter(
+      String name, String asalSekolah, String username, String password) async {
+    _loading.value = true;
+    update();
+    _successRegister.value =
+        await SourceUser.register(name, asalSekolah, username, password);
     update();
     _loading.value = false;
     update();
