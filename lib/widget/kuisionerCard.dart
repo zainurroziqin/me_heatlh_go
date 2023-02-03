@@ -23,18 +23,6 @@ class _kuisionerCardState extends State<kuisionerCard> {
   final cKuisioner = Get.put(CKuisioner());
 
   @override
-  void initState() {
-    super.initState();
-    // value = 0;
-  }
-
-  // setValue(int val) {
-  //   setState(() {
-  //      cKuisioner.hasil = val;
-  //   });
-  // }
-
-  @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 10.h),
