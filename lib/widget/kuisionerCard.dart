@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:me_heatlh_go/controller/cKuisioner.dart';
 import 'package:me_heatlh_go/model/kuisioner.dart';
+import 'package:me_heatlh_go/pages/detailKuisioner.dart';
 
 import '../config/theme.dart';
 
@@ -28,184 +29,220 @@ class _kuisionerCardState extends State<kuisionerCard> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 10.h),
-      child: Container(
-        width: MediaQuery.of(context).size.width,
-        height: 400.h,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          color: whiteColor,
-        ),
-        padding: EdgeInsets.only(left: 10.w),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.only(top: 20.h),
-              child: SizedBox(
-                width: 330.w,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      widget.kuisioner.idKuisioner,
-                      style: inter30014.copyWith(
-                          fontSize: 16.sp, color: blackColor),
-                      textAlign: TextAlign.justify,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 5.h),
-                      child: Column(
-                        children: [
-                          SizedBox(
-                            width: 290.w,
-                            child: Text(
-                              widget.kuisioner.pertanyaan,
-                              style: inter30014.copyWith(
-                                  fontSize: 16.sp, color: blackColor),
-                              textAlign: TextAlign.justify,
-                            ),
+    return Column(
+      children: [
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 10.h),
+          child: Container(
+            width: MediaQuery.of(context).size.width,
+            height: 400.h,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: whiteColor,
+            ),
+            padding: EdgeInsets.only(left: 10.w),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.only(top: 20.h),
+                  child: SizedBox(
+                    width: 330.w,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          widget.kuisioner.idKuisioner,
+                          style: inter30014.copyWith(
+                              fontSize: 16.sp, color: blackColor),
+                          textAlign: TextAlign.justify,
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(left: 5.h),
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                width: 290.w,
+                                child: Text(
+                                  widget.kuisioner.pertanyaan,
+                                  style: inter30014.copyWith(
+                                      fontSize: 16.sp, color: blackColor),
+                                  textAlign: TextAlign.justify,
+                                ),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 10.h,
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    RadioListTile(
+                      value: 1,
+                      groupValue: value,
+                      onChanged: (val) {
+                        setState(() {
+                          cKuisioner.setUpdate(value);
+                          cKuisioner.removeDetails(detailJawabanKuis);
+
+                          value = val!;
+                          hasil = val;
+
+                          detailJawabanKuis =
+                              '{kuis: ${widget.kuisioner.idKuisioner} | nilai: $val}';
+
+                          cKuisioner.setHasil(hasil);
+                          hasil = cKuisioner.hasil;
+
+                          cKuisioner.setDetails(detailJawabanKuis);
+                          details = cKuisioner.details;
+                        });
+                      },
+                      activeColor: Colors.blue,
+                      title: Text("TP (Tidak Pernah)"),
+                      selected: false,
+                    ),
+                    RadioListTile(
+                      value: 2,
+                      groupValue: value,
+                      onChanged: (val) {
+                        setState(() {
+                          cKuisioner.setUpdate(value);
+                          cKuisioner.removeDetails(detailJawabanKuis);
+
+                          value = val!;
+                          hasil = val;
+
+                          detailJawabanKuis =
+                              '{kuis: ${widget.kuisioner.idKuisioner} | nilai: $val}';
+
+                          cKuisioner.setHasil(hasil);
+                          hasil = cKuisioner.hasil;
+
+                          cKuisioner.setDetails(detailJawabanKuis);
+                          details = cKuisioner.details;
+                        });
+                      },
+                      activeColor: Colors.blue,
+                      title: Text("JP (Jarang)"),
+                    ),
+                    RadioListTile(
+                      value: 3,
+                      groupValue: value,
+                      onChanged: (val) {
+                        setState(() {
+                          cKuisioner.setUpdate(value);
+                          cKuisioner.removeDetails(detailJawabanKuis);
+
+                          value = val!;
+                          hasil = val;
+
+                          detailJawabanKuis =
+                              '{kuis: ${widget.kuisioner.idKuisioner} | nilai: $val}';
+
+                          cKuisioner.setHasil(hasil);
+                          hasil = cKuisioner.hasil;
+
+                          cKuisioner.setDetails(detailJawabanKuis);
+                          details = cKuisioner.details;
+                        });
+                      },
+                      activeColor: Colors.blue,
+                      title: Text("KD (Kadang-kadang)"),
+                    ),
+                    RadioListTile(
+                      value: 4,
+                      groupValue: value,
+                      onChanged: (val) {
+                        setState(() {
+                          cKuisioner.setUpdate(value);
+                          cKuisioner.removeDetails(detailJawabanKuis);
+
+                          value = val!;
+                          hasil = val;
+
+                          detailJawabanKuis =
+                              '{kuis: ${widget.kuisioner.idKuisioner} | nilai: $val}';
+
+                          cKuisioner.setHasil(hasil);
+                          hasil = cKuisioner.hasil;
+
+                          cKuisioner.setDetails(detailJawabanKuis);
+                          details = cKuisioner.details;
+                        });
+                      },
+                      activeColor: Colors.blue,
+                      title: Text("SR (Sering)"),
+                    ),
+                    RadioListTile(
+                      value: 5,
+                      groupValue: value,
+                      onChanged: (val) {
+                        setState(() {
+                          cKuisioner.setUpdate(value);
+                          cKuisioner.removeDetails(detailJawabanKuis);
+
+                          value = val!;
+                          hasil = val;
+
+                          detailJawabanKuis =
+                              '{kuis: ${widget.kuisioner.idKuisioner} | nilai: $val}';
+
+                          cKuisioner.setHasil(hasil);
+                          hasil = cKuisioner.hasil;
+
+                          cKuisioner.setDetails(detailJawabanKuis);
+                          details = cKuisioner.details;
+                        });
+                      },
+                      activeColor: Colors.blue,
+                      title: Text("SL (Selalu)"),
                     ),
                   ],
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 10.h,
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                RadioListTile(
-                  value: 1,
-                  groupValue: value,
-                  onChanged: (val) {
-                    setState(() {
-                      cKuisioner.setUpdate(value);
-                      cKuisioner.removeDetails(detailJawabanKuis);
-
-                      value = val!;
-                      hasil = val;
-
-                      detailJawabanKuis =
-                          '{kuis: ${widget.kuisioner.idKuisioner} | nilai: $val}';
-
-                      cKuisioner.setHasil(hasil);
-                      hasil = cKuisioner.hasil;
-
-                      cKuisioner.setDetails(detailJawabanKuis);
-                      details = cKuisioner.details;
-                    });
-                  },
-                  activeColor: Colors.blue,
-                  title: Text("TP (Tidak Pernah)"),
-                  selected: false,
-                ),
-                RadioListTile(
-                  value: 2,
-                  groupValue: value,
-                  onChanged: (val) {
-                    setState(() {
-                      cKuisioner.setUpdate(value);
-                      cKuisioner.removeDetails(detailJawabanKuis);
-
-                      value = val!;
-                      hasil = val;
-
-                      detailJawabanKuis =
-                          '{kuis: ${widget.kuisioner.idKuisioner} | nilai: $val}';
-
-                      cKuisioner.setHasil(hasil);
-                      hasil = cKuisioner.hasil;
-
-                      cKuisioner.setDetails(detailJawabanKuis);
-                      details = cKuisioner.details;
-                    });
-                  },
-                  activeColor: Colors.blue,
-                  title: Text("JP (Jarang)"),
-                ),
-                RadioListTile(
-                  value: 3,
-                  groupValue: value,
-                  onChanged: (val) {
-                    setState(() {
-                      cKuisioner.setUpdate(value);
-                      cKuisioner.removeDetails(detailJawabanKuis);
-
-                      value = val!;
-                      hasil = val;
-
-                      detailJawabanKuis =
-                          '{kuis: ${widget.kuisioner.idKuisioner} | nilai: $val}';
-
-                      cKuisioner.setHasil(hasil);
-                      hasil = cKuisioner.hasil;
-
-                      cKuisioner.setDetails(detailJawabanKuis);
-                      details = cKuisioner.details;
-                    });
-                  },
-                  activeColor: Colors.blue,
-                  title: Text("KD (Kadang-kadang)"),
-                ),
-                RadioListTile(
-                  value: 4,
-                  groupValue: value,
-                  onChanged: (val) {
-                    setState(() {
-                      cKuisioner.setUpdate(value);
-                      cKuisioner.removeDetails(detailJawabanKuis);
-
-                      value = val!;
-                      hasil = val;
-
-                      detailJawabanKuis =
-                          '{kuis: ${widget.kuisioner.idKuisioner} | nilai: $val}';
-
-                      cKuisioner.setHasil(hasil);
-                      hasil = cKuisioner.hasil;
-
-                      cKuisioner.setDetails(detailJawabanKuis);
-                      details = cKuisioner.details;
-                    });
-                  },
-                  activeColor: Colors.blue,
-                  title: Text("SR (Sering)"),
-                ),
-                RadioListTile(
-                  value: 5,
-                  groupValue: value,
-                  onChanged: (val) {
-                    setState(() {
-                      cKuisioner.setUpdate(value);
-                      cKuisioner.removeDetails(detailJawabanKuis);
-
-                      value = val!;
-                      hasil = val;
-
-                      detailJawabanKuis =
-                          '{kuis: ${widget.kuisioner.idKuisioner} | nilai: $val}';
-
-                      cKuisioner.setHasil(hasil);
-                      hasil = cKuisioner.hasil;
-
-                      cKuisioner.setDetails(detailJawabanKuis);
-                      details = cKuisioner.details;
-                    });
-                  },
-                  activeColor: Colors.blue,
-                  title: Text("SL (Selalu)"),
-                ),
+                )
               ],
-            )
-          ],
+            ),
+          ),
         ),
-      ),
+        widget.kuisioner.idKuisioner == "38"
+            ? GestureDetector(
+                onTap: () {
+                  Get.to(const DetailKuisioner());
+                },
+                child: Container(
+                  width: 200.w,
+                  height: 40.h,
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: lightColor.withOpacity(0.3),
+                        spreadRadius: 0,
+                        blurRadius: 4,
+                        offset: const Offset(0, 4),
+                      ),
+                    ],
+                    color: secondaryColor,
+                    borderRadius: BorderRadius.circular(48.w),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'SUBMIT',
+                      style: sarala40016.copyWith(
+                          fontSize: 12.sp,
+                          color: blackColor,
+                          fontWeight: FontWeight.w700),
+                    ),
+                  ),
+                ),
+              )
+            : const SizedBox.shrink()
+      ],
     );
   }
 }
