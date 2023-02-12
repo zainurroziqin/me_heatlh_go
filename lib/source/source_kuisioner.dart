@@ -14,4 +14,19 @@ class SourceKuisioner {
     }
     return [];
   }
+
+  static Future<bool> postJawaban(
+      String idUser, String detailJawaban, String nilai, String hasil) async {
+    String url = '${Api.baseUrl}/jawaban';
+    Map? responseBody = await AppRequest.post(url, {
+      'id_user': idUser,
+      'detail_jawaban': detailJawaban,
+      'nilai': nilai,
+      'hasil': hasil
+    });
+
+    if (responseBody == null) return false;
+    if (responseBody['success'] == null) return false;
+    return responseBody['success'];
+  }
 }

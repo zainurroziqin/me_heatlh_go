@@ -20,9 +20,9 @@ class _DetailKuisionerState extends State<DetailKuisioner> {
   getHasil() {
     hasil = cKuisioner.hasil;
     if (hasil! > 95) {
-      deskripsi = 'mengalami depresi';
+      deskripsi = 'Mengalami depresi';
     } else {
-      deskripsi = 'tidak mengalami depresi';
+      deskripsi = 'Tidak mengalami depresi';
     }
   }
 
@@ -41,7 +41,7 @@ class _DetailKuisionerState extends State<DetailKuisioner> {
         child: Center(
           child: Container(
             width: MediaQuery.of(context).size.width,
-            height: 400.h,
+            height: 150.h,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               color: whiteColor,
@@ -53,25 +53,30 @@ class _DetailKuisionerState extends State<DetailKuisioner> {
                 ),
                 Text(
                   'Hasil dari pengisian Kuisioner adalah : ${hasil}',
+                  style: inter40014.copyWith(
+                    color: blackColor,
+                  ),
                 ),
                 SizedBox(
                   height: 15.h,
                 ),
                 Text(
                   '=== ${deskripsi} ===',
+                  style: inter40014.copyWith(
+                      color: blackColor, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(
                   height: 15.h,
                 ),
-                Text(
-                  '${jsonEncode(cKuisioner.details)}',
-                ),
-                SizedBox(
-                  height: 30.h,
-                ),
+                // Text(
+                //   '${jsonEncode(cKuisioner.details)}',
+                // // ),
+                // SizedBox(
+                //   height: 30.h,
+                // ),
                 GestureDetector(
                   onTap: () {
-                    Get.back();
+                    Get.back(result: true);
                   },
                   child: Container(
                     width: 200.w,

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -5,8 +7,10 @@ import 'package:get/get.dart';
 import 'package:me_heatlh_go/controller/cKuisioner.dart';
 import 'package:me_heatlh_go/model/kuisioner.dart';
 import 'package:me_heatlh_go/pages/detailKuisioner.dart';
+import 'package:me_heatlh_go/source/source_kuisioner.dart';
 
 import '../config/theme.dart';
+import '../controller/cUser.dart';
 
 class kuisionerCard extends StatefulWidget {
   final Kuisioner kuisioner;
@@ -23,6 +27,26 @@ class _kuisionerCardState extends State<kuisionerCard> {
   int reset = 0;
 
   final cKuisioner = Get.put(CKuisioner());
+
+  final cUser = Get.put(CUser());
+
+  addJawaban() async {
+    int nilai = cKuisioner.hasil;
+    String hasil;
+    if (nilai > 95) {
+      hasil = 'Mengalami depresi';
+    } else {
+      hasil = 'Tidak mengalami depresi';
+    }
+    bool success = await SourceKuisioner.postJawaban(cUser.data.idUser!,
+        jsonEncode(cKuisioner.details), nilai.toString(), hasil);
+    if (success) {
+      Future.delayed(const Duration(milliseconds: 2000), () {
+        // Get.back(result: true);
+        Get.to(const DetailKuisioner());
+      });
+    }
+  }
 
   String detailJawabanKuis = "";
   List details = [];
@@ -210,10 +234,11 @@ class _kuisionerCardState extends State<kuisionerCard> {
             ),
           ),
         ),
-        widget.kuisioner.idKuisioner == "38"
+        widget.kuisioner.idKuisioner == "${cKuisioner.listKuisioner.length}"
             ? GestureDetector(
                 onTap: () {
-                  Get.to(const DetailKuisioner());
+                  // Get.to(const DetailKuisioner());
+                  addJawaban();
                 },
                 child: Container(
                   width: 200.w,
