@@ -11,6 +11,11 @@ class CKuisioner extends GetxController {
   setHasil(int n) => _hasil.value = _hasil.value + n;
   setUpdate(int n) => _hasil.value = _hasil.value - n;
 
+  final _details = <String>[].obs;
+  List get details => _details.value;
+  setDetails(n) => _details.value.add(n);
+  removeDetails(n) => _details.value.remove(n);
+
   final _listKuisioner = <Kuisioner>[].obs;
   List<Kuisioner> get listKuisioner => _listKuisioner.value;
 

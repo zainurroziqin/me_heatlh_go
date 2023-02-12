@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(360, 720),
-      builder: (_, child){
+      builder: (_, child) {
         return GetMaterialApp(
           title: 'MeHealth Go',
           debugShowCheckedModeBanner: false,
@@ -27,4 +27,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

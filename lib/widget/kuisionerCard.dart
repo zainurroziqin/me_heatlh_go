@@ -20,7 +20,11 @@ class _kuisionerCardState extends State<kuisionerCard> {
   int value = 0;
   int hasil = 0;
   int reset = 0;
+
   final cKuisioner = Get.put(CKuisioner());
+
+  String detailJawabanKuis = "";
+  List details = [];
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +32,7 @@ class _kuisionerCardState extends State<kuisionerCard> {
       padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 10.h),
       child: Container(
         width: MediaQuery.of(context).size.width,
-        height: 350.h,
+        height: 400.h,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           color: whiteColor,
@@ -82,10 +86,19 @@ class _kuisionerCardState extends State<kuisionerCard> {
                   onChanged: (val) {
                     setState(() {
                       cKuisioner.setUpdate(value);
+                      cKuisioner.removeDetails(detailJawabanKuis);
+
                       value = val!;
                       hasil = val;
+
+                      detailJawabanKuis =
+                          '{kuis: ${widget.kuisioner.idKuisioner} | nilai: $val}';
+
                       cKuisioner.setHasil(hasil);
                       hasil = cKuisioner.hasil;
+
+                      cKuisioner.setDetails(detailJawabanKuis);
+                      details = cKuisioner.details;
                     });
                   },
                   activeColor: Colors.blue,
@@ -98,10 +111,19 @@ class _kuisionerCardState extends State<kuisionerCard> {
                   onChanged: (val) {
                     setState(() {
                       cKuisioner.setUpdate(value);
+                      cKuisioner.removeDetails(detailJawabanKuis);
+
                       value = val!;
                       hasil = val;
+
+                      detailJawabanKuis =
+                          '{kuis: ${widget.kuisioner.idKuisioner} | nilai: $val}';
+
                       cKuisioner.setHasil(hasil);
                       hasil = cKuisioner.hasil;
+
+                      cKuisioner.setDetails(detailJawabanKuis);
+                      details = cKuisioner.details;
                     });
                   },
                   activeColor: Colors.blue,
@@ -113,10 +135,19 @@ class _kuisionerCardState extends State<kuisionerCard> {
                   onChanged: (val) {
                     setState(() {
                       cKuisioner.setUpdate(value);
+                      cKuisioner.removeDetails(detailJawabanKuis);
+
                       value = val!;
                       hasil = val;
+
+                      detailJawabanKuis =
+                          '{kuis: ${widget.kuisioner.idKuisioner} | nilai: $val}';
+
                       cKuisioner.setHasil(hasil);
                       hasil = cKuisioner.hasil;
+
+                      cKuisioner.setDetails(detailJawabanKuis);
+                      details = cKuisioner.details;
                     });
                   },
                   activeColor: Colors.blue,
@@ -128,10 +159,19 @@ class _kuisionerCardState extends State<kuisionerCard> {
                   onChanged: (val) {
                     setState(() {
                       cKuisioner.setUpdate(value);
+                      cKuisioner.removeDetails(detailJawabanKuis);
+
                       value = val!;
                       hasil = val;
+
+                      detailJawabanKuis =
+                          '{kuis: ${widget.kuisioner.idKuisioner} | nilai: $val}';
+
                       cKuisioner.setHasil(hasil);
                       hasil = cKuisioner.hasil;
+
+                      cKuisioner.setDetails(detailJawabanKuis);
+                      details = cKuisioner.details;
                     });
                   },
                   activeColor: Colors.blue,
@@ -143,10 +183,19 @@ class _kuisionerCardState extends State<kuisionerCard> {
                   onChanged: (val) {
                     setState(() {
                       cKuisioner.setUpdate(value);
+                      cKuisioner.removeDetails(detailJawabanKuis);
+
                       value = val!;
                       hasil = val;
+
+                      detailJawabanKuis =
+                          '{kuis: ${widget.kuisioner.idKuisioner} | nilai: $val}';
+
                       cKuisioner.setHasil(hasil);
                       hasil = cKuisioner.hasil;
+
+                      cKuisioner.setDetails(detailJawabanKuis);
+                      details = cKuisioner.details;
                     });
                   },
                   activeColor: Colors.blue,

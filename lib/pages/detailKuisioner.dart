@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -39,7 +41,7 @@ class _DetailKuisionerState extends State<DetailKuisioner> {
         child: Center(
           child: Container(
             width: MediaQuery.of(context).size.width,
-            height: 150.h,
+            height: 400.h,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               color: whiteColor,
@@ -57,6 +59,12 @@ class _DetailKuisionerState extends State<DetailKuisioner> {
                 ),
                 Text(
                   '=== ${deskripsi} ===',
+                ),
+                SizedBox(
+                  height: 15.h,
+                ),
+                Text(
+                  '${jsonEncode(cKuisioner.details)}',
                 ),
                 SizedBox(
                   height: 30.h,
