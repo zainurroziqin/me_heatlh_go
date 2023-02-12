@@ -51,9 +51,12 @@ class kontakCard extends StatelessWidget {
                   SizedBox(
                     height: 11.h,
                   ),
-                  Text(
-                    konsultan.nama!,
-                    style: sarala40016.copyWith(color: blackColor),
+                  SizedBox(
+                    width: 210.w,
+                    child: Text(
+                      konsultan.nama!,
+                      style: sarala40016.copyWith(color: blackColor),
+                    ),
                   ),
                   Text(
                     konsultan.pekerjaan!,
