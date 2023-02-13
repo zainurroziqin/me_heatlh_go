@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:me_heatlh_go/controller/cKuisioner.dart';
@@ -129,7 +128,7 @@ class _kuisionerCardState extends State<kuisionerCard> {
                         });
                       },
                       activeColor: Colors.blue,
-                      title: Text("TP (Tidak Pernah)"),
+                      title: const Text("TP (Tidak Pernah)"),
                       selected: false,
                     ),
                     RadioListTile(
@@ -154,7 +153,7 @@ class _kuisionerCardState extends State<kuisionerCard> {
                         });
                       },
                       activeColor: Colors.blue,
-                      title: Text("JP (Jarang)"),
+                      title: const Text("JP (Jarang)"),
                     ),
                     RadioListTile(
                       value: 3,
@@ -178,7 +177,7 @@ class _kuisionerCardState extends State<kuisionerCard> {
                         });
                       },
                       activeColor: Colors.blue,
-                      title: Text("KD (Kadang-kadang)"),
+                      title: const Text("KD (Kadang-kadang)"),
                     ),
                     RadioListTile(
                       value: 4,
@@ -202,7 +201,7 @@ class _kuisionerCardState extends State<kuisionerCard> {
                         });
                       },
                       activeColor: Colors.blue,
-                      title: Text("SR (Sering)"),
+                      title: const Text("SR (Sering)"),
                     ),
                     RadioListTile(
                       value: 5,
@@ -226,7 +225,7 @@ class _kuisionerCardState extends State<kuisionerCard> {
                         });
                       },
                       activeColor: Colors.blue,
-                      title: Text("SL (Selalu)"),
+                      title: const Text("SL (Selalu)"),
                     ),
                   ],
                 )
@@ -237,7 +236,6 @@ class _kuisionerCardState extends State<kuisionerCard> {
         widget.kuisioner.idKuisioner == "${cKuisioner.listKuisioner.length}"
             ? GestureDetector(
                 onTap: () {
-                  // Get.to(const DetailKuisioner());
                   addJawaban();
                 },
                 child: Container(
