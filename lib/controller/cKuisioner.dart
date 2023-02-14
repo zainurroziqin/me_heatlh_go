@@ -7,16 +7,23 @@ class CKuisioner extends GetxController {
   bool get loading => _loading.value;
 
   final _list = <int>[0].obs;
-  int? panjang;
+  final _panjang = 0.obs;
+  int get panjang => _panjang.value;
   List<int> get dataList => _list.value;
 
   resetPanjang() async {
     _list.clear();
   }
 
+  final _validasiJawaban = 0.obs;
+  int get validasiJawaban => _validasiJawaban.value;
+  setValidasiJawaban(int n) =>
+      _validasiJawaban.value = _validasiJawaban.value + n;
+  resetValidasiJawaban() => _validasiJawaban .value = 0;
+
   getPanjangList() {
-    panjang = listKuisioner.length;
-    for (int i = 0; i < panjang! + 1; i++) {
+    _panjang.value = listKuisioner.length;
+    for (int i = 0; i < _panjang.value + 1; i++) {
       _list.add(0);
     }
   }

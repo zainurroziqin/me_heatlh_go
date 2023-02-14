@@ -30,6 +30,7 @@ class _DetailKuisionerState extends State<DetailKuisioner> {
   kembali() async {
     cKuisioner.resetPanjang();
     cKuisioner.resetHasil();
+    cKuisioner.resetValidasiJawaban();
     Get.back(result: true);
   }
 
