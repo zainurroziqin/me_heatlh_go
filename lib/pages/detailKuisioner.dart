@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:me_heatlh_go/config/theme.dart';
 import 'package:me_heatlh_go/controller/cKuisioner.dart';
+import 'package:me_heatlh_go/pages/home/kuisionerPage.dart';
 
 class DetailKuisioner extends StatefulWidget {
   const DetailKuisioner({Key? key}) : super(key: key);
@@ -24,6 +25,12 @@ class _DetailKuisionerState extends State<DetailKuisioner> {
     } else {
       deskripsi = 'Tidak mengalami depresi';
     }
+  }
+
+  kembali() async {
+    cKuisioner.resetPanjang();
+    cKuisioner.resetHasil();
+    Get.back(result: true);
   }
 
   @override
@@ -76,7 +83,7 @@ class _DetailKuisionerState extends State<DetailKuisioner> {
                 // ),
                 GestureDetector(
                   onTap: () {
-                    Get.back(result: true);
+                    kembali();
                   },
                   child: Container(
                     width: 200.w,

@@ -21,13 +21,34 @@ class kuisionerCard extends StatefulWidget {
 }
 
 class _kuisionerCardState extends State<kuisionerCard> {
-  int value = 0;
+  // int value = 0;
   int hasil = 0;
   int reset = 0;
 
   final cKuisioner = Get.put(CKuisioner());
 
+  // List<int> list = [0];
+  // int? panjang;
+
+  // getPanjangList() async {
+  //   panjang = cKuisioner.listKuisioner.length;
+
+  //   for (int i = 0; i < panjang!-1; i++) {
+  //     list.add(0);
+  //   }
+  // }
+
   final cUser = Get.put(CUser());
+
+  final snackBar = const SnackBar(
+    content: Text('ISI SEMUA KUISIONER YAA :)'),
+  );
+
+  @override
+  void initState() {
+    super.initState();
+    cKuisioner.getPanjangList();
+  }
 
   addJawaban() async {
     int nilai = cKuisioner.hasil;
@@ -41,7 +62,6 @@ class _kuisionerCardState extends State<kuisionerCard> {
         jsonEncode(cKuisioner.details), nilai.toString(), hasil);
     if (success) {
       Future.delayed(const Duration(milliseconds: 2000), () {
-        // Get.back(result: true);
         Get.to(const DetailKuisioner());
       });
     }
@@ -75,7 +95,7 @@ class _kuisionerCardState extends State<kuisionerCard> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          widget.kuisioner.idKuisioner,
+                          widget.kuisioner.nomor,
                           style: inter30014.copyWith(
                               fontSize: 16.sp, color: blackColor),
                           textAlign: TextAlign.justify,
@@ -108,13 +128,16 @@ class _kuisionerCardState extends State<kuisionerCard> {
                   children: [
                     RadioListTile(
                       value: 1,
-                      groupValue: value,
+                      groupValue: cKuisioner.dataList[int.parse(widget.kuisioner.nomor)],
                       onChanged: (val) {
                         setState(() {
-                          cKuisioner.setUpdate(value);
+                          cKuisioner.setUpdate(
+                              cKuisioner
+                              .dataList[int.parse(widget.kuisioner.nomor)]);
                           cKuisioner.removeDetails(detailJawabanKuis);
 
-                          value = val!;
+                          cKuisioner
+                                  .dataList[int.parse(widget.kuisioner.nomor)] = val!;
                           hasil = val;
 
                           detailJawabanKuis =
@@ -133,13 +156,17 @@ class _kuisionerCardState extends State<kuisionerCard> {
                     ),
                     RadioListTile(
                       value: 2,
-                      groupValue: value,
+                      groupValue: cKuisioner
+                          .dataList[int.parse(widget.kuisioner.nomor)],
                       onChanged: (val) {
                         setState(() {
-                          cKuisioner.setUpdate(value);
+                          cKuisioner.setUpdate(
+                              cKuisioner
+                              .dataList[int.parse(widget.kuisioner.nomor)]);
                           cKuisioner.removeDetails(detailJawabanKuis);
 
-                          value = val!;
+                          cKuisioner
+                                  .dataList[int.parse(widget.kuisioner.nomor)] = val!;
                           hasil = val;
 
                           detailJawabanKuis =
@@ -157,13 +184,17 @@ class _kuisionerCardState extends State<kuisionerCard> {
                     ),
                     RadioListTile(
                       value: 3,
-                      groupValue: value,
+                      groupValue: cKuisioner
+                          .dataList[int.parse(widget.kuisioner.nomor)],
                       onChanged: (val) {
                         setState(() {
-                          cKuisioner.setUpdate(value);
+                          cKuisioner.setUpdate(
+                              cKuisioner
+                              .dataList[int.parse(widget.kuisioner.nomor)]);
                           cKuisioner.removeDetails(detailJawabanKuis);
 
-                          value = val!;
+                          cKuisioner
+                                  .dataList[int.parse(widget.kuisioner.nomor)] = val!;
                           hasil = val;
 
                           detailJawabanKuis =
@@ -181,13 +212,17 @@ class _kuisionerCardState extends State<kuisionerCard> {
                     ),
                     RadioListTile(
                       value: 4,
-                      groupValue: value,
+                      groupValue: cKuisioner
+                          .dataList[int.parse(widget.kuisioner.nomor)],
                       onChanged: (val) {
                         setState(() {
-                          cKuisioner.setUpdate(value);
+                          cKuisioner.setUpdate(
+                              cKuisioner
+                              .dataList[int.parse(widget.kuisioner.nomor)]);
                           cKuisioner.removeDetails(detailJawabanKuis);
 
-                          value = val!;
+                          cKuisioner
+                                  .dataList[int.parse(widget.kuisioner.nomor)] = val!;
                           hasil = val;
 
                           detailJawabanKuis =
@@ -205,13 +240,17 @@ class _kuisionerCardState extends State<kuisionerCard> {
                     ),
                     RadioListTile(
                       value: 5,
-                      groupValue: value,
+                      groupValue: cKuisioner
+                          .dataList[int.parse(widget.kuisioner.nomor)],
                       onChanged: (val) {
                         setState(() {
-                          cKuisioner.setUpdate(value);
+                          cKuisioner.setUpdate(
+                              cKuisioner
+                              .dataList[int.parse(widget.kuisioner.nomor)]);
                           cKuisioner.removeDetails(detailJawabanKuis);
 
-                          value = val!;
+                          cKuisioner
+                                  .dataList[int.parse(widget.kuisioner.nomor)] = val!;
                           hasil = val;
 
                           detailJawabanKuis =
@@ -236,7 +275,9 @@ class _kuisionerCardState extends State<kuisionerCard> {
         widget.kuisioner.idKuisioner == "${cKuisioner.listKuisioner.length}"
             ? GestureDetector(
                 onTap: () {
+                  // print('$list');
                   addJawaban();
+                  // Get.to(const DetailKuisioner());
                 },
                 child: Container(
                   width: 200.w,
