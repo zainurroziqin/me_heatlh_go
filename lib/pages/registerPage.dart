@@ -26,8 +26,8 @@ class _RegisterPageState extends State<RegisterPage> {
 
   register() async {
     if (formKey.currentState!.validate()) {
-      await cLogin.regsiter(emailController.text, asalSekolahController.text,
-          nameController.text, asalSekolahController.text);
+      await cLogin.regsiter(emailController.text, nameController.text,
+          passwordController.text, asalSekolahController.text);
       if (cLogin.successRegister) {
         // ignore: use_build_context_synchronously
         DInfo.dialogSuccess(context, 'Berhasil Register');

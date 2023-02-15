@@ -20,11 +20,11 @@ class CLogin extends GetxController {
   }
 
   regsiter(
-      String name, String asalSekolah, String username, String password) async {
+      String username, String name, String password, String asalSekolah) async {
     _loading.value = true;
     update();
     _successRegister.value =
-        await SourceUser.register(name, asalSekolah, username, password);
+        await SourceUser.register(username, name, password, asalSekolah);
     update();
     _loading.value = false;
     update();
