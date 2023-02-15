@@ -17,4 +17,13 @@ class CArtikel extends GetxController{
     _loading.value = false;
     update();
   }
+
+  getListArtikelByKategori(int n) async{
+    _loading.value = true;
+    update();
+    _listArtikel.value = await SourceArtikel.getArtikelByKategori(n);
+    update();
+    _loading.value = false;
+    update();
+  }
 }

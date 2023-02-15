@@ -32,15 +32,23 @@ class _DetailArtikelPageState extends State<DetailArtikelPage> {
                 SizedBox(
                   height: 26.h,
                 ),
-                Image.network(
-                  '${Api.baseUrlImg}/${widget.artikel.thumbnail!.namaGambar!}',
-                  width: 300.w,
-                  height: 177.h,
-                  fit: BoxFit.cover,
-                ),
+                widget.artikel.thumbnail == ""
+                    ? Center(
+                        child: Image.asset(
+                        'assets/no_image.png',
+                        width: 300.w,
+                        height: 177.h,
+                      ))
+                    : Center(
+                      child: Image.network(
+                          '${Api.baseUrlImg}/${widget.artikel.thumbnail!}',
+                          width: 300.w,
+                          height: 177.h),
+                    ),
+                SizedBox(height: 8.h,),    
                 Text(
                   widget.artikel.judul!,
-                  style: inter40014.copyWith(fontSize: 16.sp),
+                  style: inter40014.copyWith(fontSize: 18.sp, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(
                   height: 11.h,

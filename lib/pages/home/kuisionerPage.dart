@@ -36,7 +36,7 @@ class _KuisionerPageState extends State<KuisionerPage> {
     return Scaffold(
       backgroundColor: primariColor,
       body: Padding(
-          padding: EdgeInsets.only(top: 70.h, bottom: 50.h),
+          padding: EdgeInsets.only(top: 8.h, bottom: 50.h),
           child: Column(
             children: <Widget>[
               SizedBox(

@@ -39,7 +39,7 @@ class _ContactPageState extends State<ContactPage> {
       backgroundColor: primariColor,
       body: Padding(
           padding:
-              EdgeInsets.only(top: 70.h, bottom: 50.h, left: 15.w, right: 15.w),
+              EdgeInsets.only(top: 8.h, bottom: 50.h, left: 15.w, right: 15.w),
           child: Column(
             children: [
               SizedBox(

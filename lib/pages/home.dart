@@ -42,50 +42,50 @@ class _HomePageState extends State<HomePage> {
         child: Stack(
           children: [
             Center(child: _widgethome.elementAt(_selectedIndex)),
-            Align(
-              alignment: Alignment.topCenter,
-              child: Container(
-                width: 360.w,
-                height: 70.h,
-                decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.only(
-                        bottomLeft: Radius.circular(16),
-                        bottomRight: Radius.circular(16)),
-                    color: blueColor),
-                child: Stack(
-                  children: [
-                    Positioned(
-                        top: 8.h,
-                        left: 20.w,
-                        child: Icon(
-                          Icons.person_rounded,
-                          size: 55,
-                          color: whiteColor,
-                        )),
-                    Positioned(
-                      top: 14.h,
-                      left: 84.w,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            cUser.data.name ?? '',
-                            style: inter40014,
-                          ),
-                          const SizedBox(
-                            height: 4,
-                          ),
-                          Text(
-                            cUser.data.asalSekolah ?? '',
-                            style: inter40014,
-                          )
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ),
+            // Align(
+            //   alignment: Alignment.topCenter,
+            //   child: Container(
+            //     width: 360.w,
+            //     height: 70.h,
+            //     decoration: BoxDecoration(
+            //         borderRadius: const BorderRadius.only(
+            //             bottomLeft: Radius.circular(16),
+            //             bottomRight: Radius.circular(16)),
+            //         color: blueColor),
+            //     child: Stack(
+            //       children: [
+            //         Positioned(
+            //             top: 8.h,
+            //             left: 20.w,
+            //             child: Icon(
+            //               Icons.person_rounded,
+            //               size: 55,
+            //               color: whiteColor,
+            //             )),
+            //         Positioned(
+            //           top: 14.h,
+            //           left: 84.w,
+            //           child: Column(
+            //             crossAxisAlignment: CrossAxisAlignment.start,
+            //             children: [
+            //               Text(
+            //                 cUser.data.name ?? '',
+            //                 style: inter40014,
+            //               ),
+            //               const SizedBox(
+            //                 height: 4,
+            //               ),
+            //               Text(
+            //                 cUser.data.asalSekolah ?? '',
+            //                 style: inter40014,
+            //               )
+            //             ],
+            //           ),
+            //         )
+            //       ],
+            //     ),
+            //   ),
+            // ),
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(

@@ -15,4 +15,16 @@ class SourceArtikel{
     }
     return [];
   }
+
+  static Future<List<Artikel>> getArtikelByKategori(int n)async{
+    String url = '${Api.baseUrl}/daftar-artikel-kategori?id_kategori=$n';
+    Map? responseBody = await AppRequest.gets(url);
+
+    if(responseBody == null) return [];
+    if(responseBody.isNotEmpty){
+      List list = responseBody['data'];
+      return list.map((e) => Artikel.fromJson(e)).toList();
+    }
+    return [];
+  }
 }

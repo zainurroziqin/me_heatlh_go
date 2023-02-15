@@ -20,13 +20,13 @@ class ArtikelPage extends StatefulWidget {
 
 class _ArtikelPageState extends State<ArtikelPage> {
   // List listArtikel = <Artikel>[
-    final cArtikel = Get.put(CArtikel());
+  final cArtikel = Get.put(CArtikel());
 
-    refresh(){
-      cArtikel.getListArtikel();
-    }
+  refresh() {
+    cArtikel.getListArtikel();
+  }
 
-    @override
+  @override
   void initState() {
     // TODO: implement initState\
     refresh();
@@ -39,16 +39,21 @@ class _ArtikelPageState extends State<ArtikelPage> {
     return Scaffold(
       backgroundColor: primariColor,
       body: Padding(
-        padding: EdgeInsets.only(top: 70.h, bottom: 50.h),
+        padding: EdgeInsets.only(top: 8.h, bottom: 50.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
-              height: 44.h,
+              height: 21.h,
             ),
-            Center(child: Image.asset('assets/image_dummy.png', width: 200.w, height: 118.h, fit: BoxFit.fill,)),
+            Center(
+              child: Text(
+                "ARTIKEL",
+                style: inter70016,
+              ),
+            ),
             SizedBox(
-              height: 55.h,
+              height: 21.h,
             ),
             Expanded(
               child: GetBuilder<CArtikel>(
@@ -61,7 +66,9 @@ class _ArtikelPageState extends State<ArtikelPage> {
                       itemCount: _.listArtikel.length,
                       itemBuilder: (context, index) {
                         Artikel artikel = _.listArtikel[index];
-                        return artikelCard(artikel: artikel,);
+                        return artikelCard(
+                          artikel: artikel,
+                        );
                       },
                     ),
                   );

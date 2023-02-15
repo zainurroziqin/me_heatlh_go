@@ -14,7 +14,7 @@ class Artikel {
   String? judul;
   String? deskripsi;
   List<Thumbnail>? gambar;
-  Thumbnail? thumbnail;
+  String? thumbnail;
   String? createdAt;
 
   factory Artikel.fromJson(Map<String, dynamic> json) => Artikel(
@@ -24,7 +24,7 @@ class Artikel {
         deskripsi: json["deskripsi"],
         gambar: List<Thumbnail>.from(
             json["gambar"].map((x) => Thumbnail.fromJson(x))),
-        thumbnail: Thumbnail.fromJson(json["thumbnail"]),
+        thumbnail: json["thumbnail"],
         createdAt: json["created_at"],
       );
 
@@ -34,7 +34,7 @@ class Artikel {
         "judul": judul,
         "deskripsi": deskripsi,
         "gambar": List<dynamic>.from(gambar!.map((x) => x.toJson())),
-        "thumbnail": thumbnail!.toJson(),
+        "thumbnail": thumbnail,
         "created_at": createdAt,
       };
 }

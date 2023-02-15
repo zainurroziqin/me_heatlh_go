@@ -28,7 +28,7 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       backgroundColor: primariColor,
       body: Padding(
-          padding: EdgeInsets.only(top: 70.h, bottom: 50.h),
+          padding: EdgeInsets.only(top: 8.h, bottom: 50.h),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [

@@ -36,13 +36,14 @@ class artikelCard extends StatelessWidget {
                   width: 6.w,
                 ),
                 ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
-                  child: Image.network(
-                    '${Api.baseUrlImg}/${artikel.thumbnail!.namaGambar!}',
-                    width: 125.w,
-                    height: 74.h,
-                  ),
-                ),
+                    borderRadius: BorderRadius.circular(8),
+                    child: artikel.thumbnail == ""
+                        ? Image.asset('assets/no_image.png', width: 125.w, height: 74.h,)
+                        : Image.network(
+                            '${Api.baseUrlImg}/${artikel.thumbnail!}',
+                            width: 125.w,
+                            height: 74.h,
+                          )),
                 SizedBox(
                   width: 19.w,
                 ),
