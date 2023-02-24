@@ -47,7 +47,7 @@ class _ContactPageState extends State<ContactPage> {
               ),
               Center(
                 child: Text(
-                  'KONTAK WA DOKTER',
+                  'KONTAK WA PERAWAT',
                   style: inter70016,
                 ),
               ),

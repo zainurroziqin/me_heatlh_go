@@ -18,11 +18,13 @@ class SourceUser {
   }
 
   static Future<bool> register(
-      String username, String name, String password, String asalSekolah) async {
+      String username, String name, String password, String asalSekolah, String jenisKelamin, String umur) async {
     String url = '${Api.baseUrl}/register';
     Map? responseBody = await AppRequest.post(url, {
       'username': username,
       'name': name,
+      'jenis_kelamin' : jenisKelamin,
+      'umur' : umur,
       'password': password,
       'asal_sekolah': asalSekolah
     });

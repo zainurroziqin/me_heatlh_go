@@ -18,16 +18,25 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPageState extends State<RegisterPage> {
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
+  TextEditingController umurController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController asalSekolahController = TextEditingController();
   final formKey = GlobalKey<FormState>();
   final cLogin = Get.put(CLogin());
   bool showPassword = true;
+  String? _dropDownValue;
 
   register() async {
     if (formKey.currentState!.validate()) {
-      await cLogin.regsiter(emailController.text, nameController.text,
-          passwordController.text, asalSekolahController.text);
+      if (_dropDownValue!.isNotEmpty) {
+        await cLogin.regsiter(
+            emailController.text,
+            nameController.text,
+            _dropDownValue!,
+            umurController.text,
+            passwordController.text,
+            asalSekolahController.text);
+      }
       if (cLogin.successRegister) {
         // ignore: use_build_context_synchronously
         DInfo.dialogSuccess(context, 'Berhasil Register');
@@ -120,6 +129,82 @@ class _RegisterPageState extends State<RegisterPage> {
                                 controller: asalSekolahController,
                                 decoration: InputDecoration(
                                   hintText: 'Masukkan Asal Sekolah',
+                                  hintStyle: styleHintText,
+                                  border: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(24.w)),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 18.h,
+                            ),
+                            Text(
+                              'JENIS KELAMIN',
+                              style: sarala40016,
+                            ),
+                            SizedBox(
+                              height: 18.h,
+                            ),
+                            Container(
+                              width: 320.w,
+                              height: 48.h,
+                              decoration: BoxDecoration(
+                                  color: whiteColor,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(24.w))),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: DropdownButton(
+                                  items: const [
+                                    DropdownMenuItem(
+                                      value: 'Laki-laki',
+                                      child: Text('Laki-laki'),
+                                    ),
+                                    DropdownMenuItem(
+                                      value: 'Perempuan',
+                                      child: Text('Perempuan'),
+                                    ),
+                                  ],
+                                  value: _dropDownValue,
+                                  hint: Text(
+                                    'Pilih Jenis Kelamin',
+                                    style: styleHintText,
+                                  ),
+                                  isExpanded: true,
+                                  onChanged: (String? value) {
+                                    setState(
+                                      () {
+                                        _dropDownValue = value!;
+                                      },
+                                    );
+                                  },
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 18.h,
+                            ),
+                            Text(
+                              'UMUR',
+                              style: sarala40016,
+                            ),
+                            SizedBox(
+                              height: 6.h,
+                            ),
+                            Container(
+                              width: 320.w,
+                              height: 48.h,
+                              decoration: BoxDecoration(
+                                  color: whiteColor,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(24.w))),
+                              child: TextFormField(
+                                keyboardType: TextInputType.number,
+                                controller: umurController,
+                                decoration: InputDecoration(
+                                  hintText: 'Masukkan Umur',
                                   hintStyle: styleHintText,
                                   border: OutlineInputBorder(
                                     borderRadius:

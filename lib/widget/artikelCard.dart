@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -38,7 +39,11 @@ class artikelCard extends StatelessWidget {
                 ClipRRect(
                     borderRadius: BorderRadius.circular(8),
                     child: artikel.thumbnail == ""
-                        ? Image.asset('assets/no_image.png', width: 125.w, height: 74.h,)
+                        ? Image.asset(
+                            'assets/no_image.png',
+                            width: 125.w,
+                            height: 74.h,
+                          )
                         : Image.network(
                             '${Api.baseUrlImg}/${artikel.thumbnail!}',
                             width: 125.w,
