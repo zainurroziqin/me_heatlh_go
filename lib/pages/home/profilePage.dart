@@ -36,7 +36,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 height: 24.h,
               ),
               Text(
-                'Akun',
+                'AKUN',
                 style: inter70016.copyWith(fontSize: 20.sp),
               ),
               SizedBox(
@@ -52,7 +52,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   child: Column(
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(left: 28.w, top: 37.h),
+                        padding: EdgeInsets.only(left: 10.w, top: 25.h),
                         child: Row(
                           children: [
                             const Icon(
@@ -63,12 +63,31 @@ class _ProfilePageState extends State<ProfilePage> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  cUser.data.name ?? '',
+                                  'Nama : ${cUser.data.name}',
                                   style: inter40014.copyWith(
                                       fontSize: 16.sp, color: blackColor),
                                 ),
+                                SizedBox(
+                                  height: 5.h,
+                                ),
                                 Text(
-                                  cUser.data.asalSekolah ?? '',
+                                  'Sekolah : ${cUser.data.asalSekolah}',
+                                  style: inter40014.copyWith(
+                                      fontSize: 16.sp, color: blackColor),
+                                ),
+                                SizedBox(
+                                  height: 5.h,
+                                ),
+                                Text(
+                                  'Jenis Kelamin : ${cUser.data.jenisKelamin}',
+                                  style: inter40014.copyWith(
+                                      fontSize: 16.sp, color: blackColor),
+                                ),
+                                SizedBox(
+                                  height: 5.h,
+                                ),
+                                Text(
+                                  'Umur : ${cUser.data.umur} Tahun',
                                   style: inter40014.copyWith(
                                       fontSize: 16.sp, color: blackColor),
                                 ),
@@ -77,7 +96,9 @@ class _ProfilePageState extends State<ProfilePage> {
                           ],
                         ),
                       ),
-                      SizedBox(height:97.h,),
+                      SizedBox(
+                        height: 60.h,
+                      ),
                       GestureDetector(
                         onTap: () => logout(),
                         child: Container(
