@@ -26,12 +26,15 @@ class _DetailKuisionerState extends State<DetailKuisioner> {
   final cKuisioner = Get.put(CKuisioner());
   getHasil() {
     hasil = cKuisioner.hasil;
-    if (hasil! > 95) {
-      deskripsi = 'Mengalami depresi';
+    if (hasil! > 58) {
+      deskripsi = 'Kesehatan Mental Baik';
       kategori = 1;
-    } else {
-      deskripsi = 'Tidak mengalami depresi';
+    } else if(hasil! > 29){
+      deskripsi = 'Kesehatan Mental Cukup';
       kategori = 2;
+    }else {
+      deskripsi = 'Kesehatan Mental Buruk';
+      kategori = 3;
     }
   }
 

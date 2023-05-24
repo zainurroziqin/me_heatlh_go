@@ -7,8 +7,6 @@ import 'package:get/get.dart';
 import 'package:me_heatlh_go/config/theme.dart';
 import 'package:me_heatlh_go/controller/cArtikel.dart';
 import 'package:me_heatlh_go/model/artikel.dart';
-
-import '../../controller/cKonsultan.dart';
 import '../../widget/artikelCard.dart';
 
 class ArtikelPage extends StatefulWidget {
@@ -19,7 +17,6 @@ class ArtikelPage extends StatefulWidget {
 }
 
 class _ArtikelPageState extends State<ArtikelPage> {
-  // List listArtikel = <Artikel>[
   final cArtikel = Get.put(CArtikel());
 
   refresh() {
@@ -28,7 +25,6 @@ class _ArtikelPageState extends State<ArtikelPage> {
 
   @override
   void initState() {
-    // TODO: implement initState\
     refresh();
     cArtikel.getListArtikel();
     super.initState();

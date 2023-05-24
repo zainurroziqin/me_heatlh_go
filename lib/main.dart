@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:me_heatlh_go/pages/detailKuisioner.dart';
 import 'package:me_heatlh_go/pages/splashScreen.dart';
 
 void main() {

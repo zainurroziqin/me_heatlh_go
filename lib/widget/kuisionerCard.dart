@@ -54,10 +54,12 @@ class _kuisionerCardState extends State<kuisionerCard> {
   addJawaban() async {
     int nilai = cKuisioner.hasil;
     String hasil;
-    if (nilai > 95) {
-      hasil = 'Mengalami depresi';
-    } else {
-      hasil = 'Tidak mengalami depresi';
+    if (nilai > 58) {
+      hasil = 'Kesehatan Mental Baik';
+    } else if(nilai > 29) {
+      hasil = 'Kesehatan Mental Cukup';
+    }else{
+      hasil = 'Kesehatan Mental Buruk';
     }
     bool success = await SourceKuisioner.postJawaban(cUser.data.idUser!,
         jsonEncode(cKuisioner.details), nilai.toString(), hasil);
@@ -79,7 +81,7 @@ class _kuisionerCardState extends State<kuisionerCard> {
           padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 10.h),
           child: Container(
             width: MediaQuery.of(context).size.width,
-            height: 400.h,
+            height: 280.h,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               color: whiteColor,
@@ -128,7 +130,7 @@ class _kuisionerCardState extends State<kuisionerCard> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     RadioListTile(
-                      value: 1,
+                      value: 3,
                       groupValue: cKuisioner
                           .dataList[int.parse(widget.kuisioner.nomor)],
                       onChanged: (val) {
@@ -192,43 +194,10 @@ class _kuisionerCardState extends State<kuisionerCard> {
                         });
                       },
                       activeColor: Colors.blue,
-                      title: const Text("JP (Jarang)"),
-                    ),
-                    RadioListTile(
-                      value: 3,
-                      groupValue: cKuisioner
-                          .dataList[int.parse(widget.kuisioner.nomor)],
-                      onChanged: (val) {
-                        setState(() {
-                          if (cKuisioner
-                                  .dataList[int.parse(widget.kuisioner.nomor)] <
-                              1) {
-                            cKuisioner.setValidasiJawaban(1);
-                          }
-                          cKuisioner.setUpdate(cKuisioner
-                              .dataList[int.parse(widget.kuisioner.nomor)]);
-                          cKuisioner.removeDetails(detailJawabanKuis);
-
-                          cKuisioner
-                                  .dataList[int.parse(widget.kuisioner.nomor)] =
-                              val!;
-                          hasil = val;
-
-                          detailJawabanKuis =
-                              '{kuis: ${widget.kuisioner.idKuisioner} | nilai: $val}';
-
-                          cKuisioner.setHasil(hasil);
-                          hasil = cKuisioner.hasil;
-
-                          cKuisioner.setDetails(detailJawabanKuis);
-                          details = cKuisioner.details;
-                        });
-                      },
-                      activeColor: Colors.blue,
                       title: const Text("KD (Kadang-kadang)"),
                     ),
                     RadioListTile(
-                      value: 4,
+                      value: 1,
                       groupValue: cKuisioner
                           .dataList[int.parse(widget.kuisioner.nomor)],
                       onChanged: (val) {
@@ -258,41 +227,74 @@ class _kuisionerCardState extends State<kuisionerCard> {
                         });
                       },
                       activeColor: Colors.blue,
-                      title: const Text("SR (Sering)"),
+                      title: const Text("S (Sering)"),
                     ),
-                    RadioListTile(
-                      value: 5,
-                      groupValue: cKuisioner
-                          .dataList[int.parse(widget.kuisioner.nomor)],
-                      onChanged: (val) {
-                        setState(() {
-                          if (cKuisioner.dataList[
-                                  int.parse(widget.kuisioner.nomor)] ==
-                              0) {
-                            cKuisioner.setValidasiJawaban(1);
-                          }
-                          cKuisioner.setUpdate(cKuisioner
-                              .dataList[int.parse(widget.kuisioner.nomor)]);
-                          cKuisioner.removeDetails(detailJawabanKuis);
+                    // RadioListTile(
+                    //   value: 4,
+                    //   groupValue: cKuisioner
+                    //       .dataList[int.parse(widget.kuisioner.nomor)],
+                    //   onChanged: (val) {
+                    //     setState(() {
+                    //       if (cKuisioner
+                    //               .dataList[int.parse(widget.kuisioner.nomor)] <
+                    //           1) {
+                    //         cKuisioner.setValidasiJawaban(1);
+                    //       }
+                    //       cKuisioner.setUpdate(cKuisioner
+                    //           .dataList[int.parse(widget.kuisioner.nomor)]);
+                    //       cKuisioner.removeDetails(detailJawabanKuis);
 
-                          cKuisioner
-                                  .dataList[int.parse(widget.kuisioner.nomor)] =
-                              val!;
-                          hasil = val;
+                    //       cKuisioner
+                    //               .dataList[int.parse(widget.kuisioner.nomor)] =
+                    //           val!;
+                    //       hasil = val;
 
-                          detailJawabanKuis =
-                              '{kuis: ${widget.kuisioner.idKuisioner} | nilai: $val}';
+                    //       detailJawabanKuis =
+                    //           '{kuis: ${widget.kuisioner.idKuisioner} | nilai: $val}';
 
-                          cKuisioner.setHasil(hasil);
-                          hasil = cKuisioner.hasil;
+                    //       cKuisioner.setHasil(hasil);
+                    //       hasil = cKuisioner.hasil;
 
-                          cKuisioner.setDetails(detailJawabanKuis);
-                          details = cKuisioner.details;
-                        });
-                      },
-                      activeColor: Colors.blue,
-                      title: const Text("SL (Selalu)"),
-                    ),
+                    //       cKuisioner.setDetails(detailJawabanKuis);
+                    //       details = cKuisioner.details;
+                    //     });
+                    //   },
+                    //   activeColor: Colors.blue,
+                    //   title: const Text("SR (Sering)"),
+                    // ),
+                    // RadioListTile(
+                    //   value: 5,
+                    //   groupValue: cKuisioner
+                    //       .dataList[int.parse(widget.kuisioner.nomor)],
+                    //   onChanged: (val) {
+                    //     setState(() {
+                    //       if (cKuisioner.dataList[
+                    //               int.parse(widget.kuisioner.nomor)] ==
+                    //           0) {
+                    //         cKuisioner.setValidasiJawaban(1);
+                    //       }
+                    //       cKuisioner.setUpdate(cKuisioner
+                    //           .dataList[int.parse(widget.kuisioner.nomor)]);
+                    //       cKuisioner.removeDetails(detailJawabanKuis);
+
+                    //       cKuisioner
+                    //               .dataList[int.parse(widget.kuisioner.nomor)] =
+                    //           val!;
+                    //       hasil = val;
+
+                    //       detailJawabanKuis =
+                    //           '{kuis: ${widget.kuisioner.idKuisioner} | nilai: $val}';
+
+                    //       cKuisioner.setHasil(hasil);
+                    //       hasil = cKuisioner.hasil;
+
+                    //       cKuisioner.setDetails(detailJawabanKuis);
+                    //       details = cKuisioner.details;
+                    //     });
+                    //   },
+                    //   activeColor: Colors.blue,
+                    //   title: const Text("SL (Selalu)"),
+                    // ),
                   ],
                 )
               ],
